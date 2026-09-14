@@ -1,7 +1,7 @@
-import { Cctv, ShieldCheck, SprayCan, Wind } from "lucide-react";
+import { ShieldCheck, SprayCan, Wind } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
-export type ServiceCategory = "Incendie" | "Désenfumage" | "Sûreté" | "Formation" | "Maintenance";
+export type ServiceCategory = "Incendie" | "Désenfumage" | "Formation" | "Maintenance";
 
 export type Service = {
   slug: string;
@@ -37,18 +37,6 @@ export const services: Service[] = [
     maintenance: "Les appareils sont contrôlés avec méthode afin d’identifier leur état, leur accessibilité et les opérations nécessaires.",
     attention: ["Adéquation au type de risque", "Accessibilité et signalisation", "État général et traçabilité"],
     buildings: commonBuildings,
-  },
-  {
-    slug: "videosurveillance",
-    title: "Vidéosurveillance",
-    short: "Surveillance adaptée aux accès, flux et zones sensibles du bâtiment.",
-    category: "Sûreté",
-    icon: Cctv,
-    purpose: "Renforcer la visibilité sur les accès et les zones sensibles, au service de la prévention et de la levée de doute.",
-    installation: "L’implantation se fonde sur les usages du site, les angles utiles, les flux et les contraintes de l’environnement.",
-    maintenance: "Le contrôle porte sur le fonctionnement, la qualité d’image, les supports et la continuité de l’installation.",
-    attention: ["Zones réellement utiles", "Qualité et continuité d’image", "Respect du cadre d’usage"],
-    buildings: ["Bureaux", "Commerces", "Copropriétés", "Entrepôts", "Sites professionnels"],
   },
   {
     slug: "maintenance",

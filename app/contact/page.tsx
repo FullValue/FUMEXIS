@@ -6,7 +6,7 @@ import { siteConfig } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Contact et demande de devis",
-  description: "Contactez FUMEXIS pour une étude, une installation, une maintenance ou une formation en sécurité incendie, désenfumage et sûreté.",
+  description: "Contactez FUMEXIS pour une étude, une installation, une maintenance ou une formation en sécurité incendie et désenfumage.",
   alternates: { canonical: "/contact" },
 };
 

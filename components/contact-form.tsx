@@ -56,8 +56,8 @@ export function ContactForm() {
           <span>Type de besoin *</span>
           <select name="need" required defaultValue="">
             <option value="" disabled>Sélectionner</option>
-            <option>Sécurité incendie</option><option>Désenfumage</option><option>Sûreté</option>
-            <option>Formation</option><option>Maintenance</option><option>Autre</option>
+            <option>Sécurité incendie</option><option>Désenfumage</option>
+            <option>Formation incendie</option><option>Maintenance</option><option>Autre</option>
           </select>
         </label>
         <label className="form-full"><span>Votre message *</span><textarea name="message" rows={6} required minLength={20} placeholder="Parlez-nous du bâtiment, des équipements concernés et de votre besoin…" /></label>

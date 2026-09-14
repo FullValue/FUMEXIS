@@ -11,14 +11,14 @@ import { siteConfig } from "@/data/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
-  title: { default: "FUMEXIS | Sécurité incendie, désenfumage et sûreté", template: "%s | FUMEXIS" },
+  title: { default: "FUMEXIS | Sécurité incendie, désenfumage et formation", template: "%s | FUMEXIS" },
   description: siteConfig.description,
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "fr_FR",
     siteName: "FUMEXIS",
-    title: "FUMEXIS | Sécurité incendie, désenfumage et sûreté",
+    title: "FUMEXIS | Sécurité incendie, désenfumage et formation",
     description: siteConfig.description,
     images: [{ url: "/images/hero-fumexis.jpg", width: 1672, height: 935, alt: "Installation de sécurité incendie FUMEXIS" }],
   },

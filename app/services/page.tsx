@@ -6,7 +6,7 @@ import { FinalCta } from "@/components/final-cta";
 
 export const metadata: Metadata = {
   title: "Nos services",
-  description: "Découvrez les services FUMEXIS : extincteurs, désenfumage, vidéosurveillance, formation et maintenance.",
+  description: "Découvrez les services FUMEXIS : extincteurs, désenfumage, formation incendie et maintenance.",
   alternates: { canonical: "/services" },
 };
 

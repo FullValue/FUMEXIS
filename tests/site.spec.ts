@@ -1,8 +1,8 @@
 import { expect, test } from "@playwright/test";
 
 const routes = [
-  "/", "/services", "/securite-incendie", "/desenfumage", "/surete", "/formation",
-  "/a-propos", "/contact", "/services/extincteurs", "/services/videosurveillance", "/services/maintenance",
+  "/", "/services", "/securite-incendie", "/desenfumage", "/formation",
+  "/a-propos", "/contact", "/services/extincteurs", "/services/maintenance",
   "/mentions-legales", "/politique-confidentialite",
 ];
 
@@ -28,6 +28,8 @@ test("removed services return a 404", async ({ page }) => {
     "/services/extinction-automatique",
     "/services/extinction-exterieure",
     "/services/camera-infrarouge",
+    "/services/videosurveillance",
+    "/surete",
   ]) {
     const response = await page.goto(route);
     expect(response?.status(), route).toBe(404);
@@ -51,8 +53,8 @@ test("mobile menu, filters, FAQ and contact validation work", async ({ page }) =
   await page.getByRole("button", { name: "Fermer le menu" }).click();
 
   await page.goto("/services");
-  await page.getByRole("button", { name: "Sûreté" }).click();
-  await expect(page.getByRole("heading", { name: "Vidéosurveillance" })).toBeVisible();
+  await page.getByRole("button", { name: "Formation" }).click();
+  await expect(page.getByRole("heading", { name: "Formation incendie" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Extincteurs" })).toHaveCount(0);
 
   await page.goto("/");

@@ -12,7 +12,7 @@ type ContactPayload = {
 };
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const needs = new Set(["Sécurité incendie", "Désenfumage", "Sûreté", "Formation", "Maintenance", "Autre"]);
+const needs = new Set(["Sécurité incendie", "Désenfumage", "Formation incendie", "Maintenance", "Autre"]);
 
 export async function POST(request: Request) {
   let body: ContactPayload;

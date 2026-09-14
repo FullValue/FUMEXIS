@@ -30,7 +30,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
   const service = getService(slug);
   if (!service) notFound();
   const Icon = service.icon;
-  const image = service.slug === "videosurveillance" ? "/images/surete-batiment.jpg" : "/images/hero-fumexis.jpg";
+  const image = "/images/hero-fumexis.jpg";
   const faq = [
     { question: `À quoi sert la solution ${service.title} ?`, answer: service.purpose },
     { question: "Pouvez-vous intervenir sur un équipement existant ?", answer: "Oui. Une première analyse permet d’identifier l’état de l’équipement, les informations disponibles et le périmètre d’intervention pertinent." },

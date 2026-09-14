@@ -9,7 +9,7 @@ import { FinalCta } from "@/components/final-cta";
 
 export const metadata: Metadata = {
   title: "À propos",
-  description: "Découvrez l’approche terrain de FUMEXIS pour la sécurité incendie, le désenfumage et la sûreté des bâtiments professionnels.",
+  description: "Découvrez l’approche terrain de FUMEXIS pour la sécurité incendie, le désenfumage et la formation des équipes.",
   alternates: { canonical: "/a-propos" },
 };
 

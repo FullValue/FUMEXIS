@@ -24,15 +24,14 @@ const fireServiceLinks = [
 ];
 
 export const metadata: Metadata = {
-  title: "Sécurité incendie, désenfumage et sûreté",
-  description: "FUMEXIS accompagne les professionnels dans l’installation, la maintenance et la vérification de leurs équipements de sécurité.",
+  title: "Sécurité incendie, désenfumage et formation",
+  description: "FUMEXIS accompagne les professionnels pour leurs équipements de sécurité incendie, leur désenfumage et la formation de leurs équipes.",
   alternates: { canonical: "/" },
 };
 
 const expertiseImages = [
   "/images/hero-fumexis.jpg",
   "/images/desenfumage-toiture.jpg",
-  "/images/hero-fumexis.jpg",
   "/images/formation-incendie.jpg",
 ];
 
@@ -40,7 +39,7 @@ export default function Home() {
   return (
     <>
       <PageHero
-        eyebrow="SÉCURITÉ INCENDIE · DÉSENFUMAGE · SÛRETÉ"
+        eyebrow="SÉCURITÉ INCENDIE · DÉSENFUMAGE · FORMATION"
         title={<>Anticiper les risques.<br /><em>Protéger les lieux.</em></>}
         text="FUMEXIS accompagne les professionnels dans l’installation, la maintenance et le suivi de leurs équipements de sécurité."
         image="/images/hero-fumexis.jpg"
@@ -61,7 +60,7 @@ export default function Home() {
 
       <section className="expertise-section section-pad">
         <div className="container-wide">
-          <SectionHeading eyebrow="NOS EXPERTISES" title={<>Quatre champs d’action.<br /><em>Une réponse coordonnée.</em></>} />
+          <SectionHeading eyebrow="NOS EXPERTISES" title={<>Trois champs d’action.<br /><em>Une réponse coordonnée.</em></>} />
           <div className="expertise-grid">
             {expertiseLinks.map((item, index) => (
               <Reveal className={`expertise-card expertise-card--${index + 1}`} key={item.href} delay={index * 0.06}>

@@ -5,7 +5,6 @@ export type ServiceVisual = {
 
 export const serviceVisuals: Record<string, ServiceVisual> = {
   extincteurs: { src: "/images/hero-fumexis.jpg", position: "82% center" },
-  videosurveillance: { src: "/images/surete-batiment.jpg", position: "82% center" },
   maintenance: { src: "/images/hero-fumexis.jpg", position: "44% center" },
 };
 

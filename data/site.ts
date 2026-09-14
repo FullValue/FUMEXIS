@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "FUMEXIS",
   legalName: "{{COMPANY_LEGAL_NAME}}",
   description:
-    "Installation, maintenance et vérification des équipements de sécurité incendie, de désenfumage et de sûreté.",
+    "Installation, maintenance et vérification des équipements de sécurité incendie et de désenfumage, avec des formations incendie adaptées aux équipes.",
   phone: "07.67.67.33.01",
   email: "contact@fumexis.fr",
   address: "{{ADDRESS}}",
@@ -34,16 +34,10 @@ export const expertiseLinks = [
     code: "02",
   },
   {
-    label: "Sûreté",
-    href: "/surete",
-    description: "Surveiller les accès et sécuriser les bâtiments.",
-    code: "03",
-  },
-  {
     label: "Formation",
     href: "/formation",
     description: "Préparer les équipes à agir avec méthode.",
-    code: "04",
+    code: "03",
   },
 ];
 
@@ -71,7 +65,7 @@ export const defaultFaq = [
   {
     question: "Quels équipements FUMEXIS peut-il installer ?",
     answer:
-      "FUMEXIS intervient sur des solutions de sécurité incendie, de désenfumage et de sûreté : extincteurs, ouvrants de désenfumage et équipements de vidéosurveillance notamment.",
+      "FUMEXIS intervient sur les extincteurs et les solutions de désenfumage, avec l’installation, le contrôle et la maintenance des équipements concernés.",
   },
   {
     question: "Proposez-vous la maintenance d’installations existantes ?",

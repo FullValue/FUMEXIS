@@ -5,7 +5,7 @@ import { additionalServices, services, type ServiceCategory } from "@/data/servi
 import { AdditionalServiceCard, ServiceCard } from "@/components/service-card";
 import { additionalServiceVisuals, serviceVisuals } from "@/data/service-visuals";
 
-const filters: Array<"Tous" | ServiceCategory> = ["Tous", "Incendie", "Désenfumage", "Sûreté", "Formation", "Maintenance"];
+const filters: Array<"Tous" | ServiceCategory> = ["Tous", "Incendie", "Désenfumage", "Formation", "Maintenance"];
 
 export function ServiceFilter() {
   const [filter, setFilter] = useState<(typeof filters)[number]>("Tous");

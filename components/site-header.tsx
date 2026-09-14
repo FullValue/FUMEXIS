@@ -40,7 +40,7 @@ export function SiteHeader() {
                   </Link>
                   <div className="mega-panel">
                     <div className="mega-intro">
-                      <span className="micro-label">EXPERTISES / 04</span>
+                      <span className="micro-label">EXPERTISES / 03</span>
                       <p>Une lecture globale du bâtiment, de ses usages et de ses risques.</p>
                     </div>
                     <div className="mega-links">
