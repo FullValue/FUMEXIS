@@ -1,0 +1,107 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
+import { expertiseLinks, navigation } from "@/data/site";
+import { Logo } from "@/components/logo";
+
+export function SiteHeader() {
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+  const reduced = useReducedMotion();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 32);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileOpen]);
+
+  return (
+    <>
+      <header className={`site-header ${scrolled ? "site-header--scrolled" : ""}`}>
+        <div className="nav-shell">
+          <Logo />
+          <nav className="desktop-nav" aria-label="Navigation principale">
+            {navigation.map((item) =>
+              item.mega ? (
+                <div className="nav-mega" key={item.label}>
+                  <Link href={item.href} className={pathname === item.href ? "active" : ""}>
+                    {item.label}<ChevronDown size={13} />
+                  </Link>
+                  <div className="mega-panel">
+                    <div className="mega-intro">
+                      <span className="micro-label">EXPERTISES / 04</span>
+                      <p>Une lecture globale du bâtiment, de ses usages et de ses risques.</p>
+                    </div>
+                    <div className="mega-links">
+                      {expertiseLinks.map((expertise) => (
+                        <Link href={expertise.href} key={expertise.href}>
+                          <small>{expertise.code}</small>
+                          <span>{expertise.label}</span>
+                          <ArrowUpRight size={17} />
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <Link key={item.href} href={item.href} className={pathname === item.href ? "active" : ""}>
+                  {item.label}
+                </Link>
+              ),
+            )}
+          </nav>
+          <Link href="/contact" className="nav-cta">Demander un devis <ArrowUpRight size={15} /></Link>
+          <button
+            className="menu-button"
+            type="button"
+            aria-label={mobileOpen ? "Fermer le menu" : "Ouvrir le menu"}
+            aria-expanded={mobileOpen}
+            onClick={() => setMobileOpen((value) => !value)}
+          >
+            {mobileOpen ? <X /> : <Menu />}
+          </button>
+        </div>
+      </header>
+
+      <AnimatePresence>
+        {mobileOpen ? (
+          <motion.div
+            className="mobile-menu"
+            initial={reduced ? false : { clipPath: "inset(0 0 100% 0)" }}
+            animate={{ clipPath: "inset(0 0 0% 0)" }}
+            exit={reduced ? undefined : { clipPath: "inset(0 0 100% 0)" }}
+            transition={{ duration: 0.58, ease: [0.76, 0, 0.24, 1] }}
+          >
+            <div className="mobile-menu-links">
+              {navigation.map((item, index) => (
+                <motion.div
+                  key={item.href}
+                  initial={reduced ? false : { opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.08 + index * 0.045 }}
+                >
+                  <Link href={item.href} onClick={() => setMobileOpen(false)}><span>0{index + 1}</span>{item.label}</Link>
+                </motion.div>
+              ))}
+            </div>
+            <div className="mobile-expertise-links">
+              {expertiseLinks.slice(1).map((item) => <Link key={item.href} href={item.href} onClick={() => setMobileOpen(false)}>{item.label}</Link>)}
+            </div>
+            <Link href="/contact" className="mobile-cta" onClick={() => setMobileOpen(false)}>Demander un devis <ArrowUpRight /></Link>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
+    </>
+  );
+}
