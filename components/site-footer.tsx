@@ -27,6 +27,7 @@ export function SiteFooter() {
           <h3>Services</h3>
           {services.slice(0, 6).map((item) => <Link key={item.slug} href={`/services/${item.slug}`}>{item.title}</Link>)}
           <Link href="/services">Voir tous les services</Link>
+          <Link href="/blog">Conseils & articles</Link>
         </div>
         <div>
           <h3>Contact</h3>

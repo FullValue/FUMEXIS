@@ -11,9 +11,11 @@ import { Process } from "@/components/process";
 import { ReviewCarousel } from "@/components/review-carousel";
 import { Faq } from "@/components/faq";
 import { FinalCta } from "@/components/final-cta";
+import { BlogCard } from "@/components/blog-card";
 import { defaultFaq, expertiseLinks, sectors } from "@/data/site";
 import { additionalServices, services } from "@/data/services";
 import { additionalServiceVisuals, serviceVisuals } from "@/data/service-visuals";
+import { articles } from "@/data/articles";
 
 const fireServiceLinks = [
   { label: "Extincteurs", href: "/services/extincteurs" },
@@ -119,6 +121,18 @@ export default function Home() {
               ))}
             </div>
             <ArrowLink href="/securite-incendie" variant="dark">Explorer la sécurité incendie</ArrowLink>
+          </div>
+        </div>
+      </section>
+
+      <section className="home-blog section-pad">
+        <div className="container-wide">
+          <div className="heading-row">
+            <SectionHeading eyebrow="CONSEILS FUMEXIS" title={<>Mieux comprendre.<br /><em>Mieux anticiper.</em></>} intro="Des repères pratiques sur la sécurité incendie, le désenfumage, la maintenance et la formation des équipes." />
+            <ArrowLink href="/blog" variant="dark">Voir les 10 articles</ArrowLink>
+          </div>
+          <div className="home-blog-grid">
+            {articles.slice(0, 3).map((article) => <BlogCard key={article.slug} article={article} />)}
           </div>
         </div>
       </section>

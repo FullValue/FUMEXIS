@@ -16,6 +16,7 @@ export const navigation = [
   { label: "Accueil", href: "/" },
   { label: "Expertises", href: "/securite-incendie", mega: true },
   { label: "Services", href: "/services" },
+  { label: "Conseils", href: "/blog" },
   { label: "À propos", href: "/a-propos" },
   { label: "Contact", href: "/contact" },
 ];

@@ -1,9 +1,11 @@
 import { expect, test } from "@playwright/test";
+import { articles } from "../data/articles";
 
 const routes = [
-  "/", "/services", "/securite-incendie", "/desenfumage", "/formation",
+  "/", "/services", "/securite-incendie", "/desenfumage", "/formation", "/blog",
   "/a-propos", "/contact", "/services/extincteurs", "/services/maintenance",
   "/mentions-legales", "/politique-confidentialite",
+  ...articles.map((article) => `/blog/${article.slug}`),
 ];
 
 test("all public routes render without console errors", async ({ page }) => {
@@ -34,6 +36,12 @@ test("removed services return a 404", async ({ page }) => {
     const response = await page.goto(route);
     expect(response?.status(), route).toBe(404);
   }
+});
+
+test("blog exposes ten relevant articles", async ({ page }) => {
+  await page.goto("/blog");
+  await expect(page.locator(".blog-card")).toHaveCount(10);
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("Comprendre les risques");
 });
 
 for (const width of [390, 430, 768, 1024, 1440, 1920]) {
