@@ -2,9 +2,7 @@ import { expect, test } from "@playwright/test";
 
 const routes = [
   "/", "/services", "/securite-incendie", "/desenfumage", "/surete", "/formation",
-  "/a-propos", "/contact", "/services/extincteurs", "/services/ria", "/services/colonnes-seches",
-  "/services/colonnes-en-charge", "/services/extinction-automatique", "/services/extinction-exterieure",
-  "/services/camera-infrarouge", "/services/videosurveillance", "/services/maintenance",
+  "/a-propos", "/contact", "/services/extincteurs", "/services/videosurveillance", "/services/maintenance",
   "/mentions-legales", "/politique-confidentialite",
 ];
 
@@ -20,6 +18,20 @@ test("all public routes render without console errors", async ({ page }) => {
   }
 
   expect(errors).toEqual([]);
+});
+
+test("removed services return a 404", async ({ page }) => {
+  for (const route of [
+    "/services/ria",
+    "/services/colonnes-seches",
+    "/services/colonnes-en-charge",
+    "/services/extinction-automatique",
+    "/services/extinction-exterieure",
+    "/services/camera-infrarouge",
+  ]) {
+    const response = await page.goto(route);
+    expect(response?.status(), route).toBe(404);
+  }
 });
 
 for (const width of [390, 430, 768, 1024, 1440, 1920]) {

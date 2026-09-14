@@ -6,14 +6,22 @@ import { PageHero } from "@/components/page-hero";
 import { SectionHeading } from "@/components/section-heading";
 import { ArrowLink } from "@/components/arrow-link";
 import { Reveal } from "@/components/reveal";
-import { ServiceCard } from "@/components/service-card";
+import { AdditionalServiceCard, ServiceCard } from "@/components/service-card";
 import { Process } from "@/components/process";
 import { ReviewCarousel } from "@/components/review-carousel";
 import { Faq } from "@/components/faq";
 import { FinalCta } from "@/components/final-cta";
 import { defaultFaq, expertiseLinks, sectors } from "@/data/site";
-import { services } from "@/data/services";
-import { serviceVisuals } from "@/data/service-visuals";
+import { additionalServices, services } from "@/data/services";
+import { additionalServiceVisuals, serviceVisuals } from "@/data/service-visuals";
+
+const fireServiceLinks = [
+  { label: "Extincteurs", href: "/services/extincteurs" },
+  { label: "Installation", href: "/securite-incendie" },
+  { label: "Entretien & vérification", href: "/securite-incendie" },
+  { label: "Maintenance préventive", href: "/services/maintenance" },
+  { label: "Maintenance corrective", href: "/services/maintenance" },
+];
 
 export const metadata: Metadata = {
   title: "Sécurité incendie, désenfumage et sûreté",
@@ -76,9 +84,13 @@ export default function Home() {
             <ArrowLink href="/services" variant="dark">Voir tous les services</ArrowLink>
           </div>
           <div className="services-grid">
-            {services.slice(0, 8).map((service, index) => {
+            {services.map((service, index) => {
               const visual = serviceVisuals[service.slug];
               return <ServiceCard key={service.slug} service={service} index={index} image={visual.src} imagePosition={visual.position} />;
+            })}
+            {additionalServices.map((service, index) => {
+              const visual = additionalServiceVisuals[index];
+              return <AdditionalServiceCard key={service.title} service={service} index={services.length + index} image={visual.src} imagePosition={visual.position} />;
             })}
           </div>
         </div>
@@ -101,10 +113,10 @@ export default function Home() {
         <div className="container-wide fire-grid">
           <Reveal className="fire-index"><span>01 — 05</span><strong>SÉCURITÉ<br />INCENDIE</strong></Reveal>
           <div className="fire-copy">
-            <SectionHeading eyebrow="PROTECTION" title={<>Installer. Contrôler.<br /><em>Maintenir.</em></>} intro="Des équipements de première intervention aux réseaux fixes, FUMEXIS construit un suivi cohérent pour vos installations." />
+            <SectionHeading eyebrow="PROTECTION" title={<>Installer. Contrôler.<br /><em>Maintenir.</em></>} intro="De l’installation des extincteurs aux opérations de maintenance, FUMEXIS construit un suivi cohérent pour vos équipements." />
             <div className="fire-links">
-              {services.slice(0, 6).map((service, index) => (
-                <Link href={`/services/${service.slug}`} key={service.slug}><span>{String(index + 1).padStart(2, "0")}</span>{service.title}<MoveRight /></Link>
+              {fireServiceLinks.map((service, index) => (
+                <Link href={service.href} key={service.label}><span>{String(index + 1).padStart(2, "0")}</span>{service.label}<MoveRight /></Link>
               ))}
             </div>
             <ArrowLink href="/securite-incendie" variant="dark">Explorer la sécurité incendie</ArrowLink>

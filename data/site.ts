@@ -71,7 +71,7 @@ export const defaultFaq = [
   {
     question: "Quels équipements FUMEXIS peut-il installer ?",
     answer:
-      "FUMEXIS intervient sur un ensemble de solutions de sécurité incendie, de désenfumage et de sûreté : extincteurs, RIA, colonnes, systèmes d’extinction, ouvrants et équipements de surveillance notamment.",
+      "FUMEXIS intervient sur des solutions de sécurité incendie, de désenfumage et de sûreté : extincteurs, ouvrants de désenfumage et équipements de vidéosurveillance notamment.",
   },
   {
     question: "Proposez-vous la maintenance d’installations existantes ?",

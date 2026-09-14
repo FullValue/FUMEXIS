@@ -3,7 +3,7 @@ import { ExpertisePage } from "@/components/expertise-page";
 
 export const metadata: Metadata = {
   title: "Sécurité incendie",
-  description: "Installation, vérification et maintenance des équipements de sécurité incendie : extincteurs, RIA, colonnes et systèmes d’extinction.",
+  description: "Installation, vérification et maintenance des extincteurs et équipements de protection incendie.",
   alternates: { canonical: "/securite-incendie" },
 };
 
@@ -18,11 +18,11 @@ export default function SecuriteIncendiePage() {
     body="FUMEXIS intervient de l’étude à la maintenance pour structurer cet ensemble autour des risques, des usages et des circulations du bâtiment. Chaque préconisation cherche l’équilibre entre efficacité technique, simplicité d’exploitation et qualité du suivi."
     solutions={[
       { title: "Extincteurs", text: "Sélection, implantation, installation et maintenance des appareils.", href: "/services/extincteurs" },
-      { title: "RIA", text: "Réseaux de première intervention, couverture et suivi fonctionnel.", href: "/services/ria" },
-      { title: "Colonnes sèches", text: "Équipements dédiés à l’acheminement de l’eau pour les secours.", href: "/services/colonnes-seches" },
-      { title: "Colonnes en charge", text: "Réseaux alimentés, contrôlés pour conserver leur disponibilité.", href: "/services/colonnes-en-charge" },
-      { title: "Extinction automatique", text: "Réponse fixe pensée autour des risques et des volumes protégés.", href: "/services/extinction-automatique" },
-      { title: "Extinction extérieure", text: "Solutions adaptées aux équipements et zones exposées.", href: "/services/extinction-exterieure" },
+      { title: "Installation", text: "Implantation des équipements selon les risques, les usages et les circulations du bâtiment." },
+      { title: "Entretien & vérification", text: "Contrôles structurés pour identifier l’état, l’accessibilité et les besoins d’intervention." },
+      { title: "Maintenance préventive", text: "Opérations planifiées pour préserver la disponibilité des équipements.", href: "/services/maintenance" },
+      { title: "Maintenance corrective", text: "Traitement des défauts et suivi clair des actions réalisées.", href: "/services/maintenance" },
+      { title: "Protection incendie", text: "Une approche cohérente des équipements et de leur environnement d’utilisation." },
     ]}
     stepsTitle="Des équipements identifiés, accessibles et maintenus."
     points={["Installation", "Vérification", "Maintenance préventive", "Maintenance corrective"]}
