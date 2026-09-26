@@ -65,11 +65,20 @@ export function HomeHeroSlider() {
 
   useEffect(() => {
     if (paused || reducedMotion) return;
-    const timer = window.setInterval(() => {
-      if (!document.hidden) setActive((index) => (index + 1) % slides.length);
+    let expiredWhileHidden = false;
+    const timer = window.setTimeout(() => {
+      if (document.hidden) expiredWhileHidden = true;
+      else setActive((index) => (index + 1) % slides.length);
     }, 6000);
-    return () => window.clearInterval(timer);
-  }, [paused, reducedMotion]);
+    const resume = () => {
+      if (!document.hidden && expiredWhileHidden) setActive((index) => (index + 1) % slides.length);
+    };
+    document.addEventListener("visibilitychange", resume);
+    return () => {
+      window.clearTimeout(timer);
+      document.removeEventListener("visibilitychange", resume);
+    };
+  }, [active, paused, reducedMotion]);
 
   return (
     <div className="home-hero-slider" role="region" aria-roledescription="diaporama" aria-label="Découvrir FUMEXIS et ses expertises">
@@ -105,7 +114,7 @@ export function HomeHeroSlider() {
           )}
         </div>
       ))}
-      <div className="home-hero-controls" aria-label="Choisir une image">
+      <div className={`home-hero-controls ${paused ? "is-paused" : ""}`} aria-label="Choisir une image">
         {slides.map((item, index) => (
           <button
             type="button"
@@ -114,7 +123,7 @@ export function HomeHeroSlider() {
             aria-label={`Afficher l’image ${index + 1} : ${item.label.toLowerCase()}`}
             aria-current={index === active ? "true" : undefined}
             onClick={() => setActive(index)}
-          ><span /></button>
+          ><span className="home-hero-control-track"><span key={index === active ? `active-${active}-${paused}` : `idle-${index}`} /></span></button>
         ))}
         <button
           type="button"
