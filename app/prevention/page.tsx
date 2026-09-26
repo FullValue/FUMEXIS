@@ -9,7 +9,7 @@ import { FinalCta } from "@/components/final-cta";
 import { preventionTopics } from "@/data/prevention-topics";
 
 export const metadata: Metadata = {
-  title: "Prévention et formation",
+  title: "Prévention — audit et formation",
   description: "Formation incendie, santé et sécurité au travail, plans, audit et exercices : explorez les thèmes de prévention FUMEXIS.",
   alternates: { canonical: "/prevention" },
 };
@@ -22,7 +22,7 @@ export default function PreventionPage() {
         <PageHero
           eyebrow="EXPERTISE / PRÉVENTION"
           title={<>Prévoir.<br /><em>Savoir agir.</em></>}
-          text="Former les équipes, rendre les consignes visibles et éprouver les procédures pour agir avec méthode."
+          text="Audit et formation : évaluer les risques, préparer les équipes et éprouver les procédures pour agir avec méthode."
           image="/images/formation-incendie.jpg"
           compact
         />

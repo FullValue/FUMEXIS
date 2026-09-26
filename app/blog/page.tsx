@@ -6,7 +6,7 @@ import { FinalCta } from "@/components/final-cta";
 import { articles } from "@/data/articles";
 
 export const metadata: Metadata = {
-  title: "Conseils en sécurité incendie, désenfumage et formation",
+  title: "Blog — sécurité incendie et prévention",
   description: "Les articles FUMEXIS pour mieux comprendre la sécurité incendie, le désenfumage, la sûreté, la maintenance et la formation des équipes.",
   alternates: { canonical: "/blog" },
 };
@@ -17,7 +17,7 @@ export default function BlogPage() {
   return (
     <>
       <PageHero
-        eyebrow="CONSEILS / RESSOURCES"
+        eyebrow="BLOG / RESSOURCES"
         title={<>Comprendre les risques.<br /><em>Agir avec méthode.</em></>}
         text="Des repères concrets pour mieux protéger vos bâtiments, suivre vos équipements et préparer vos équipes."
         image="/images/formation-incendie.jpg"

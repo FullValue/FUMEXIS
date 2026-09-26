@@ -33,19 +33,19 @@ const slides = [
   {
     kind: "expertise",
     image: "/images/hero-slides/desenfumage.jpg",
-    label: "DÉSENFUMAGE",
+    label: "DÉSENFUMAGE NATUREL ET MÉCANIQUE",
     title: ["MAÎTRISER", "LES FUMÉES"],
-    text: "Des solutions de désenfumage pensées pour faciliter l’évacuation.",
+    text: "Des solutions de désenfumage naturel et mécanique pensées pour faciliter l’évacuation.",
     href: "/desenfumage",
     imagePosition: "center",
   },
   {
     kind: "expertise",
     image: "/images/hero-slides/formation-incendie.jpg",
-    label: "FORMATION INCENDIE",
+    label: "AUDIT ET FORMATION",
     title: ["PRÉPARER", "LES ÉQUIPES"],
-    text: "Des exercices concrets pour agir avec méthode face au risque incendie.",
-    href: "/formation",
+    text: "Évaluer les risques et préparer les équipes à agir avec méthode.",
+    href: "/prevention",
     imagePosition: "center",
   },
 ] as const;
@@ -90,7 +90,7 @@ export function HomeHeroSlider() {
         >
           {item.kind === "original" ? (
             <PageHero
-              eyebrow="SÉCURITÉ INCENDIE · DÉSENFUMAGE · FORMATION"
+              eyebrow="SÉCURITÉ INCENDIE · DÉSENFUMAGE NATUREL ET MÉCANIQUE · AUDIT ET FORMATION"
               title={<>Anticiper les risques.<br /><em>Protéger les lieux.</em></>}
               text="FUMEXIS accompagne les professionnels dans l’installation, la maintenance et le suivi de leurs équipements de sécurité."
               image="/images/hero-fumexis.jpg"

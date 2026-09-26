@@ -10,6 +10,5 @@ export const serviceVisuals: Record<string, ServiceVisual> = {
 
 export const additionalServiceVisuals: ServiceVisual[] = [
   { src: "/images/desenfumage-toiture.jpg", position: "25% center" },
-  { src: "/images/desenfumage-toiture.jpg", position: "88% center" },
   { src: "/images/formation-incendie.jpg", position: "55% center" },
 ];

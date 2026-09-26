@@ -1,20 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { MoveRight } from "lucide-react";
 import { HomeHeroSlider } from "@/components/home-hero-slider";
 import { ExpertiseCarousel } from "@/components/expertise-carousel";
 import { SectionHeading } from "@/components/section-heading";
 import { ArrowLink } from "@/components/arrow-link";
 import { Reveal } from "@/components/reveal";
-import { AdditionalServiceCard, ServiceCard } from "@/components/service-card";
+import { SectorShowcase } from "@/components/sector-showcase";
+import { FirePanel } from "@/components/fire-panel";
 import { Process } from "@/components/process";
 import { ReviewCarousel } from "@/components/review-carousel";
 import { Faq } from "@/components/faq";
-import { BlogCard } from "@/components/blog-card";
-import { defaultFaq, sectors } from "@/data/site";
-import { additionalServices, services } from "@/data/services";
-import { additionalServiceVisuals, serviceVisuals } from "@/data/service-visuals";
-import { articles } from "@/data/articles";
+import { defaultFaq } from "@/data/site";
 
 const fireServiceLinks = [
   { label: "Audit", href: "/prevention/audit-conseil-prevention" },
@@ -24,8 +22,8 @@ const fireServiceLinks = [
 ];
 
 export const metadata: Metadata = {
-  title: "Sécurité incendie, désenfumage et formation",
-  description: "FUMEXIS accompagne les professionnels pour leurs équipements de sécurité incendie, leur désenfumage et la formation de leurs équipes.",
+  title: "Sécurité incendie, désenfumage naturel et mécanique, audit et formation",
+  description: "FUMEXIS accompagne les professionnels en sécurité incendie, désenfumage naturel et mécanique, audit et formation des équipes.",
   alternates: { canonical: "/" },
 };
 
@@ -34,14 +32,14 @@ export default function Home() {
     <>
       <HomeHeroSlider />
 
-      <section className="home-intro section-pad" id="content">
-        <div className="container-wide editorial-intro">
-          <Reveal className="editorial-kicker"><span>UNE VISION GLOBALE</span></Reveal>
-          <Reveal className="editorial-title" delay={0.08}>
-            <h2>Un seul partenaire.<br />Plusieurs expertises.<br /><em>Un même niveau d’exigence.</em></h2>
+      <section className="home-intro home-intro--refined" id="content">
+        <div className="container-wide intro-flow">
+          <Reveal className="intro-statement">
+            <span className="intro-eyebrow">UNE VISION GLOBALE</span>
+            <h2>Plusieurs expertises.<br /><em>Une même exigence.</em></h2>
           </Reveal>
-          <Reveal className="editorial-copy" delay={0.16}>
-            <p>De l’analyse du site au suivi des installations, nous articulons les compétences nécessaires autour d’un objectif simple&nbsp;: des équipements lisibles, suivis et adaptés à la réalité de vos bâtiments.</p>
+          <Reveal className="intro-note" delay={0.12}>
+            <p>Un seul interlocuteur, de l’analyse de votre bâtiment au suivi de ses équipements. Une approche claire, pensée pour votre quotidien.</p>
             <ArrowLink href="/a-propos" variant="text">Notre approche</ArrowLink>
           </Reveal>
         </div>
@@ -54,28 +52,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="services-section section-pad">
-        <div className="container-wide">
-          <div className="heading-row">
-            <SectionHeading eyebrow="SOLUTIONS" title={<>Des équipements choisis<br /><em>pour le terrain.</em></>} intro="Chaque réponse part d’un usage, d’une configuration et d’un niveau de risque à comprendre." />
-            <ArrowLink href="/services" variant="dark">Voir tous les services</ArrowLink>
-          </div>
-          <div className="services-grid">
-            {services.map((service, index) => {
-              const visual = serviceVisuals[service.slug];
-              return <ServiceCard key={service.slug} service={service} index={index} image={visual.src} imagePosition={visual.position} />;
-            })}
-            {additionalServices.map((service, index) => {
-              const visual = additionalServiceVisuals[index];
-              return <AdditionalServiceCard key={service.title} service={service} index={services.length + index} image={visual.src} imagePosition={visual.position} />;
-            })}
-          </div>
-        </div>
-      </section>
-
       <section className="fire-feature section-pad">
         <div className="container-wide fire-grid">
-          <Reveal className="fire-index"><span>01 — 04</span><strong>SÉCURITÉ<br />INCENDIE</strong></Reveal>
+          <FirePanel />
           <div className="fire-copy">
             <SectionHeading eyebrow="PROTECTION" title={<>Auditer. Entretenir.<br /><em>Installer. Suivre.</em></>} intro="Audit, entretien, installation et registres de sécurité : quatre interventions pour suivre votre bâtiment." />
             <div className="fire-links">
@@ -88,7 +67,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="process-section section-pad">
+      <section className="process-section process-section--home section-pad">
+        <Image className="method-background" src="/images/hero-fumexis.jpg" alt="" fill sizes="100vw" />
         <div className="container-wide">
           <SectionHeading light eyebrow="NOTRE MÉTHODE" title={<>Un accompagnement<br /><em>de A à Z.</em></>} />
           <Process />
@@ -98,9 +78,7 @@ export default function Home() {
       <section className="sectors-section section-pad">
         <div className="container-wide sectors-grid">
           <SectionHeading eyebrow="VOS ENVIRONNEMENTS" title={<>Une méthode qui s’adapte<br /><em>à chaque bâtiment.</em></>} intro="Les contraintes diffèrent. La rigueur d’analyse reste la même." />
-          <div className="sector-list">
-            {sectors.map((sector, index) => <Reveal key={sector} delay={(index % 3) * 0.04}><span>{String(index + 1).padStart(2, "0")}</span>{sector}</Reveal>)}
-          </div>
+          <SectorShowcase />
         </div>
       </section>
 
@@ -118,17 +96,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="home-blog section-pad">
-        <div className="container-wide">
-          <div className="heading-row">
-            <SectionHeading eyebrow="CONSEILS FUMEXIS" title={<>Mieux comprendre.<br /><em>Mieux anticiper.</em></>} intro="Des repères pratiques sur la sécurité incendie, le désenfumage, la maintenance et la formation des équipes." />
-            <ArrowLink href="/blog" variant="dark">Voir les {articles.length} articles</ArrowLink>
-          </div>
-          <div className="home-blog-grid">
-            {articles.filter((article) => article.category === "Sécurité incendie" || article.category === "Désenfumage").slice(0, 3).map((article) => <BlogCard key={article.slug} article={article} />)}
-          </div>
-        </div>
-      </section>
     </>
   );
 }

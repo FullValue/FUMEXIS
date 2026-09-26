@@ -11,7 +11,7 @@ export type Article = {
   title: string;
   deck: string;
   excerpt: string;
-  category: "Sécurité incendie" | "Désenfumage" | "Formation" | "Maintenance" | "Sûreté" | "Organisation";
+  category: "Sécurité incendie" | "Désenfumage naturel et mécanique" | "Audit et formation" | "Maintenance" | "Sûreté" | "Organisation";
   publishedAt: string;
   displayDate: string;
   readingTime: string;
@@ -101,7 +101,7 @@ const existingArticles: Article[] = [
     title: "Désenfumage naturel ou mécanique : quelles différences ?",
     deck: "Deux principes techniques, un même objectif : maîtriser les fumées pour soutenir l’évacuation et l’intervention.",
     excerpt: "Comprendre les grandes différences entre ouvrants naturels et extraction mécanique avant d’étudier une solution.",
-    category: "Désenfumage",
+    category: "Désenfumage naturel et mécanique",
     publishedAt: "2026-08-27",
     displayDate: "27 août 2026",
     readingTime: "6 min",
@@ -137,7 +137,7 @@ const existingArticles: Article[] = [
     title: "Comment préparer la vérification d’un système de désenfumage ?",
     deck: "Un site accessible et des informations disponibles rendent le contrôle plus rapide, plus lisible et plus utile.",
     excerpt: "Documents, accès et interlocuteurs : une préparation simple pour faciliter la visite de maintenance.",
-    category: "Désenfumage",
+    category: "Désenfumage naturel et mécanique",
     publishedAt: "2026-08-18",
     displayDate: "18 août 2026",
     readingTime: "5 min",
@@ -173,7 +173,7 @@ const existingArticles: Article[] = [
     title: "Pourquoi former ses équipes à la manipulation des extincteurs ?",
     deck: "Connaître un équipement ne suffit pas : les équipes doivent comprendre quand et comment agir sans se mettre en danger.",
     excerpt: "Une formation concrète transforme un appareil familier en véritable moyen de première intervention.",
-    category: "Formation",
+    category: "Audit et formation",
     publishedAt: "2026-08-07",
     displayDate: "7 août 2026",
     readingTime: "6 min",
@@ -209,7 +209,7 @@ const existingArticles: Article[] = [
     title: "Comment organiser un exercice d’évacuation utile ?",
     deck: "Un exercice efficace teste les cheminements et les rôles, puis transforme les observations en actions concrètes.",
     excerpt: "Préparation, observation et débriefing : les étapes pour faire progresser les équipes sans créer de confusion.",
-    category: "Formation",
+    category: "Audit et formation",
     publishedAt: "2026-07-29",
     displayDate: "29 juillet 2026",
     readingTime: "7 min",

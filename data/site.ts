@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "FUMEXIS",
   legalName: "{{COMPANY_LEGAL_NAME}}",
   description:
-    "Installation, maintenance et vérification des équipements de sécurité incendie et de désenfumage, avec des formations incendie adaptées aux équipes.",
+    "Sécurité incendie, désenfumage naturel et mécanique, audit et formation : un accompagnement de l’installation au suivi de vos équipements et de vos équipes.",
   phone: "07.67.67.33.01",
   email: "contact@fumexis.fr",
   address: "{{ADDRESS}}",
@@ -16,7 +16,7 @@ export const navigation = [
   { label: "Accueil", href: "/" },
   { label: "Expertises", href: "/securite-incendie", mega: "expertises" },
   { label: "Services", href: "/services", mega: "services" },
-  { label: "Conseils", href: "/blog" },
+  { label: "Blog", href: "/blog" },
   { label: "À propos", href: "/a-propos" },
   { label: "Contact", href: "/contact" },
 ];
@@ -29,15 +29,15 @@ export const expertiseLinks = [
     code: "01",
   },
   {
-    label: "Désenfumage",
+    label: "Désenfumage naturel et mécanique",
     href: "/desenfumage",
     description: "Préserver des volumes praticables en cas de sinistre.",
     code: "02",
   },
   {
-    label: "Prévention",
+    label: "Audit et formation",
     href: "/prevention",
-    description: "Former les équipes et rendre les consignes lisibles.",
+    description: "Évaluer les risques et préparer les équipes à agir.",
     code: "03",
   },
 ];

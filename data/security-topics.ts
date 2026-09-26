@@ -27,10 +27,10 @@ export const securityTopics: SecurityTopic[] = [
   {
     slug: "desenfumage",
     href: "/desenfumage",
-    label: "Désenfumage",
+    label: "Désenfumage naturel et mécanique",
     menuLabel: "Désenfumage naturel et mécanique",
     title: "Donner aux fumées une voie de sortie.",
-    kicker: "02 / DÉSENFUMAGE",
+    kicker: "02 / DÉSENFUMAGE NATUREL ET MÉCANIQUE",
     intro: "Ouvrants, amenées d’air, extracteurs et commandes sont pensés ensemble pour faciliter l’évacuation et l’intervention.",
     image: "/images/desenfumage-toiture.jpg",
     imageAlt: "Ouvrants de désenfumage sur la toiture d’un bâtiment",

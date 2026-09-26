@@ -60,7 +60,7 @@ export function AdditionalServiceCard({
       <div>
         <small>{service.category}</small>
         <h3>{service.title}</h3>
-        <p>Étude, installation, contrôle et maintenance selon les besoins du bâtiment.</p>
+        <p>{service.short}</p>
       </div>
       <ArrowUpRight className="service-card-arrow" aria-hidden="true" />
     </Link>

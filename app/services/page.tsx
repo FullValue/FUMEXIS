@@ -9,7 +9,7 @@ import { serviceActions } from "@/data/service-actions";
 
 export const metadata: Metadata = {
   title: "Nos services",
-  description: "Installation, vérification, maintenance, formation et conseil : découvrez les prestations FUMEXIS.",
+  description: "Installation, vérification, maintenance, audit et formation : découvrez les prestations FUMEXIS.",
   alternates: { canonical: "/services" },
 };
 
@@ -25,6 +25,7 @@ export default function ServicesPage() {
               const Icon = action.icon;
               return (
                 <article className="service-action-item" id={action.id} key={action.id}>
+                  {action.id === "formation" ? <span id="conseil" className="service-anchor" aria-hidden="true" /> : null}
                   <span className="service-action-number">{String(index + 1).padStart(2, "0")}</span>
                   <Icon className="service-action-icon" size={34} strokeWidth={1.35} aria-hidden="true" />
                   <h3>{action.title}</h3>

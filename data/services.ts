@@ -1,7 +1,7 @@
 import { ShieldCheck, SprayCan, Wind } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
-export type ServiceCategory = "Incendie" | "Désenfumage" | "Formation" | "Maintenance";
+export type ServiceCategory = "Incendie" | "Désenfumage naturel et mécanique" | "Audit et formation" | "Maintenance";
 
 export type Service = {
   slug: string;
@@ -18,6 +18,7 @@ export type Service = {
 
 export type AdditionalService = {
   title: string;
+  short: string;
   category: ServiceCategory;
   icon: LucideIcon;
   href: string;
@@ -53,9 +54,8 @@ export const services: Service[] = [
 ];
 
 export const additionalServices: AdditionalService[] = [
-  { title: "Désenfumage naturel", category: "Désenfumage", icon: Wind, href: "/desenfumage" },
-  { title: "Désenfumage mécanique", category: "Désenfumage", icon: Wind, href: "/desenfumage" },
-  { title: "Formation incendie", category: "Formation", icon: ShieldCheck, href: "/formation" },
+  { title: "Désenfumage naturel et mécanique", short: "Étude, installation et entretien des ouvrants, extracteurs et commandes du bâtiment.", category: "Désenfumage naturel et mécanique", icon: Wind, href: "/desenfumage" },
+  { title: "Audit et formation", short: "Évaluer les risques, définir les priorités et former les équipes aux bons réflexes.", category: "Audit et formation", icon: ShieldCheck, href: "/prevention" },
 ];
 
 export const getService = (slug: string) => services.find((service) => service.slug === slug);

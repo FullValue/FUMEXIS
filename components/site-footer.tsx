@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Logo } from "@/components/logo";
 import { expertiseLinks, siteConfig } from "@/data/site";
-import { services } from "@/data/services";
+import { serviceActions } from "@/data/service-actions";
 
 export function SiteFooter() {
   return (
@@ -25,9 +25,9 @@ export function SiteFooter() {
         </div>
         <div>
           <h3>Services</h3>
-          {services.slice(0, 6).map((item) => <Link key={item.slug} href={`/services/${item.slug}`}>{item.title}</Link>)}
+          {serviceActions.map((item) => <Link key={item.id} href={`/services#${item.id}`}>{item.title}</Link>)}
           <Link href="/services">Voir tous les services</Link>
-          <Link href="/blog">Conseils & articles</Link>
+          <Link href="/blog">Blog</Link>
         </div>
         <div>
           <h3>Contact</h3>

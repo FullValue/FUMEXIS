@@ -22,18 +22,18 @@ export function PageHero({
 }) {
   const reduced = useReducedMotion();
   const animation = (delay: number) => ({
-    initial: reduced ? false : { opacity: 0, y: 34 },
+    initial: { opacity: 0, y: 34 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.85, delay, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
+    transition: { duration: reduced ? 0 : 0.85, delay: reduced ? 0 : delay, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
   });
 
   return (
     <section className={`page-hero ${compact ? "page-hero--compact" : ""}`}>
       <motion.div
         className="page-hero-image"
-        initial={reduced ? false : { scale: 1.06 }}
+        initial={{ scale: 1.06 }}
         animate={{ scale: 1 }}
-        transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: reduced ? 0 : 1.5, ease: [0.22, 1, 0.36, 1] }}
       >
         <Image src={image} alt="" fill priority sizes="100vw" />
       </motion.div>

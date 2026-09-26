@@ -1,4 +1,4 @@
-import { ClipboardCheck, ClipboardList, GraduationCap, ShieldCheck, Wrench, type LucideIcon } from "lucide-react";
+import { ClipboardCheck, GraduationCap, ShieldCheck, Wrench, type LucideIcon } from "lucide-react";
 
 export type ServiceAction = {
   id: string;
@@ -16,7 +16,7 @@ export const serviceActions: ServiceAction[] = [
     icon: Wrench,
     links: [
       { href: "/services/extincteurs", label: "Extincteurs" },
-      { href: "/desenfumage", label: "Désenfumage" },
+      { href: "/desenfumage", label: "Désenfumage naturel et mécanique" },
     ],
   },
   {
@@ -38,19 +38,13 @@ export const serviceActions: ServiceAction[] = [
   },
   {
     id: "formation",
-    title: "Formation et exercices",
-    summary: "Préparer les équipes aux gestes, aux consignes et aux mises en situation.",
+    title: "Audit et formation",
+    summary: "Évaluer les risques du site, définir les priorités et préparer les équipes aux situations d’urgence.",
     icon: GraduationCap,
     links: [
+      { href: "/prevention/audit-conseil-prevention", label: "Audit en prévention" },
       { href: "/formation", label: "Formation incendie" },
       { href: "/prevention/exercices-evacuation-confinement", label: "Exercices d’évacuation" },
     ],
-  },
-  {
-    id: "conseil",
-    title: "Audit et conseil",
-    summary: "Faire le point sur l’existant et définir les actions prioritaires.",
-    icon: ClipboardList,
-    links: [{ href: "/prevention/audit-conseil-prevention", label: "Audit en prévention" }],
   },
 ];
