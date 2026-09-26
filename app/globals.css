@@ -16,6 +16,8 @@
   --section: clamp(5.5rem, 10vw, 10rem);
   --display: "Barlow Condensed", sans-serif;
   --body: "Manrope Variable", sans-serif;
+  --security-nav-height: 13.7rem;
+  --security-nav-sticky-offset: 1.6rem;
 }
 
 * { box-sizing: border-box; }
@@ -121,7 +123,7 @@ em { font-weight: 390; }
 .mobile-cta { display: flex; margin-top: auto; padding: 1.1rem 1.3rem; align-items: center; justify-content: space-between; background: var(--red); font-size: .74rem; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; }
 
 /* Security topics */
-.security-topic-nav { padding-top: 6.3rem; background: var(--red); color: white; }
+.security-topic-nav { position: sticky; z-index: 80; top: calc(var(--security-nav-sticky-offset) * -1); padding-top: 6.3rem; background: var(--red); color: white; }
 .security-topic-nav-inner { display: flex; width: 100%; max-width: 1800px; margin: 0 auto; }
 .security-topic-home { display: flex; width: 13rem; min-width: 13rem; height: 7.4rem; padding: 1rem 1.3rem; align-items: center; gap: .7rem; border-right: 1px solid rgba(255,255,255,.32); font-family: var(--display); font-size: 1.75rem; font-weight: 690; line-height: .88; text-transform: uppercase; }
 .security-topic-home svg { flex: 0 0 auto; }
@@ -135,6 +137,10 @@ em { font-weight: 390; }
 .security-topic-link.is-active { background: rgba(0,0,0,.15); }
 .security-topic-link.is-active::after { transform: scaleX(1); }
 .security-topic-nav a:focus-visible { outline: 2px solid white; outline-offset: -5px; }
+.security-overview-hero .page-hero { height: calc(100svh - var(--security-nav-height)); min-height: 0; }
+.security-overview-hero .page-hero-content { padding-top: 1.5rem; padding-bottom: clamp(1.5rem, 5vh, 4rem); }
+.security-overview-hero .page-hero-content h1 { font-size: clamp(3.4rem, min(8.4vw, 12svh), 9.4rem); }
+.security-landing-intro, .security-detail-overview { scroll-margin-top: calc(var(--security-nav-height) - var(--security-nav-sticky-offset)); }
 
 .security-landing-intro { background: var(--paper); }
 .security-landing-intro-grid { display: grid; grid-template-columns: .65fr 1.5fr 1fr; align-items: start; gap: clamp(1.5rem, 4vw, 5rem); }
@@ -160,12 +166,12 @@ em { font-weight: 390; }
 .security-landing-close p { margin: 0; font-family: var(--display); font-size: clamp(2rem, 3.5vw, 4rem); font-weight: 630; line-height: 1; text-transform: uppercase; }
 .security-landing-close a { display: flex; align-items: center; justify-content: space-between; gap: .5rem; padding-bottom: .6rem; border-bottom: 2px solid var(--red); font-size: .67rem; font-weight: 780; letter-spacing: .07em; text-transform: uppercase; }
 
-.security-detail-hero { position: relative; display: flex; min-height: max(580px, calc(100svh - 12rem)); overflow: hidden; align-items: flex-end; background: var(--ink); color: white; }
+.security-detail-hero { position: relative; display: flex; height: calc(100svh - var(--security-nav-height)); min-height: 0; overflow: hidden; align-items: flex-end; background: var(--ink); color: white; }
 .security-detail-hero > img { object-fit: cover; }
 .security-detail-hero-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,0,0,.87), rgba(0,0,0,.56) 48%, rgba(0,0,0,.08)), linear-gradient(0deg, rgba(0,0,0,.4), transparent 45%); }
-.security-detail-hero-content { position: relative; z-index: 1; padding-top: 6rem; padding-bottom: clamp(4rem, 9vh, 7rem); }
+.security-detail-hero-content { position: relative; z-index: 1; padding-top: 1.5rem; padding-bottom: clamp(1.5rem, 5vh, 4rem); }
 .security-detail-kicker { display: block; margin-bottom: 1.5rem; color: #ff6a70; font-size: .69rem; font-weight: 780; letter-spacing: .17em; }
-.security-detail-hero h1 { max-width: 950px; margin: 0; font-family: var(--display); font-size: clamp(4.5rem, 8vw, 9rem); font-weight: 690; line-height: .83; letter-spacing: -.025em; text-transform: uppercase; text-wrap: balance; }
+.security-detail-hero h1 { max-width: 950px; margin: 0; font-family: var(--display); font-size: clamp(3.4rem, min(8vw, 12svh), 9rem); font-weight: 690; line-height: .83; letter-spacing: -.025em; text-transform: uppercase; text-wrap: balance; }
 .security-detail-hero-content > p { max-width: 660px; margin: 2rem 0 0; color: #f0f0ec; font-size: clamp(.98rem, 1.2vw, 1.16rem); line-height: 1.7; }
 .security-detail-discover { display: inline-flex; margin-top: 2rem; padding-bottom: .6rem; align-items: center; gap: 1.5rem; border-bottom: 2px solid var(--red); font-size: .69rem; font-weight: 790; letter-spacing: .09em; text-transform: uppercase; }
 .security-detail-overview { background: var(--paper); }
@@ -683,7 +689,7 @@ em { font-weight: 390; }
 }
 
 @media (max-width: 640px) {
-  :root { --pad: 1.15rem; --section: 5rem; }
+  :root { --pad: 1.15rem; --section: 5rem; --security-nav-height: 11.15rem; --security-nav-sticky-offset: .45rem; }
   .site-header { padding: .6rem; }
   .nav-shell { height: 4rem; }
   .brand-lockup { min-width: 150px; gap: .5rem; }
@@ -790,11 +796,16 @@ em { font-weight: 390; }
   .security-topic-grid, .security-related-grid, .security-detail-feature-grid { grid-template-columns: 1fr; }
   .security-topic-card { min-height: 25rem; }
   .security-topic-card-copy h3 { font-size: 3.2rem; }
-  .security-detail-hero { min-height: max(600px, calc(100svh - 11rem)); }
+  .security-overview-hero .page-hero-content { padding-bottom: 1.5rem; }
+  .security-overview-hero .page-hero-content h1 { font-size: clamp(3rem, min(17vw, 10svh), 5.2rem); }
+  .security-overview-hero .page-hero-content > p { margin-top: 1rem; }
+  .security-overview-hero .hero-actions { margin-top: 1.25rem; }
+  .security-overview-hero .hero-actions > :nth-child(2) { display: none; }
   .security-detail-hero > img { object-position: 64% center; }
-  .security-detail-hero-content { padding-top: 5rem; padding-bottom: 3.5rem; }
-  .security-detail-hero h1 { font-size: clamp(3.5rem, 13.5vw, 4.8rem); }
-  .security-detail-hero-content > p { margin-top: 1.4rem; font-size: .88rem; }
+  .security-detail-hero-content { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+  .security-detail-hero h1 { font-size: clamp(3rem, min(13.5vw, 10svh), 4.8rem); }
+  .security-detail-hero-content > p { margin-top: 1rem; font-size: .88rem; }
+  .security-detail-discover { margin-top: 1.2rem; }
   .security-detail-overview h2, .security-detail-checks h2 { font-size: clamp(3.2rem, 13vw, 4.8rem); }
   .security-detail-feature-grid article { min-height: 17rem; }
   .security-detail-checks li { grid-template-columns: 1.5rem 1fr 1.2rem; gap: .75rem; font-size: .9rem; }

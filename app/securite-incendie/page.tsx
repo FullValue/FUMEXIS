@@ -18,13 +18,15 @@ export default function SecuriteIncendiePage() {
   return (
     <>
       <SecurityTopicNav currentPath="/securite-incendie" />
-      <PageHero
-        eyebrow="EXPERTISE / SÉCURITÉ INCENDIE"
-        title={<>Chaque maillon<br /><em>compte.</em></>}
-        text="Détecter, guider, contenir et faciliter l’intervention : explorez les dispositifs qui forment la sécurité d’un bâtiment."
-        image="/images/securite/ssi.jpg"
-        compact
-      />
+      <div className="security-overview-hero">
+        <PageHero
+          eyebrow="EXPERTISE / SÉCURITÉ INCENDIE"
+          title={<>Chaque maillon<br /><em>compte.</em></>}
+          text="Détecter, guider, contenir et faciliter l’intervention : explorez les dispositifs qui forment la sécurité d’un bâtiment."
+          image="/images/securite/ssi.jpg"
+          compact
+        />
+      </div>
       <section className="security-landing-intro section-pad" id="content">
         <div className="container-wide security-landing-intro-grid">
           <div className="eyebrow"><span />UNE VISION D’ENSEMBLE</div>
