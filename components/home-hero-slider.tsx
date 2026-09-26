@@ -4,9 +4,16 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown, ArrowUpRight, Pause, Play } from "lucide-react";
+import { PageHero } from "@/components/page-hero";
 
 const slides = [
   {
+    kind: "original",
+    image: "/images/hero-fumexis.jpg",
+    label: "FUMEXIS",
+  },
+  {
+    kind: "expertise",
     image: "/images/hero-slides/alarme-incendie.jpg",
     label: "SÉCURITÉ INCENDIE",
     title: ["SÉCURITÉ", "INCENDIE", "PRÉVENTION"],
@@ -15,6 +22,7 @@ const slides = [
     imagePosition: "center",
   },
   {
+    kind: "expertise",
     image: "/images/hero-slides/extincteur-en-action.jpg",
     label: "PREMIÈRE INTERVENTION",
     title: ["EXTINCTEURS", "MOBILES"],
@@ -23,6 +31,7 @@ const slides = [
     imagePosition: "center",
   },
   {
+    kind: "expertise",
     image: "/images/hero-slides/desenfumage.jpg",
     label: "DÉSENFUMAGE",
     title: ["MAÎTRISER", "LES FUMÉES"],
@@ -31,6 +40,7 @@ const slides = [
     imagePosition: "center",
   },
   {
+    kind: "expertise",
     image: "/images/hero-slides/formation-incendie.jpg",
     label: "FORMATION INCENDIE",
     title: ["PRÉPARER", "LES ÉQUIPES"],
@@ -61,31 +71,40 @@ export function HomeHeroSlider() {
     return () => window.clearInterval(timer);
   }, [paused, reducedMotion]);
 
-  const slide = slides[active];
-
   return (
-    <section className="home-hero" aria-label="Découvrir les expertises FUMEXIS">
-      <div className="home-hero-images" aria-hidden="true">
-        {slides.map((item, index) => (
-          <div className={`home-hero-image ${index === active ? "is-active" : ""}`} key={item.image}>
-            <Image
-              src={item.image}
-              alt=""
-              fill
-              priority={index === 0}
-              sizes="100vw"
-              style={{ objectPosition: item.imagePosition }}
+    <div className="home-hero-slider" role="region" aria-roledescription="diaporama" aria-label="Découvrir FUMEXIS et ses expertises">
+      {slides.map((item, index) => (
+        <div
+          className={`home-hero-panel ${index === 0 ? "home-hero-panel--original" : ""} ${index === active ? "is-active" : ""}`}
+          aria-hidden={index !== active}
+          key={item.image}
+        >
+          {item.kind === "original" ? (
+            <PageHero
+              eyebrow="SÉCURITÉ INCENDIE · DÉSENFUMAGE · FORMATION"
+              title={<>Anticiper les risques.<br /><em>Protéger les lieux.</em></>}
+              text="FUMEXIS accompagne les professionnels dans l’installation, la maintenance et le suivi de leurs équipements de sécurité."
+              image="/images/hero-fumexis.jpg"
             />
-          </div>
-        ))}
-      </div>
-      <div className="home-hero-shade" aria-hidden="true" />
-      <div className="home-hero-content container-wide" key={active}>
-        <div className="home-hero-eyebrow"><span>{String(active + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}</span>{slide.label}</div>
-        <h1>{slide.title.map((line) => <span key={line}>{line}</span>)}</h1>
-        <p>{slide.text}</p>
-        <Link href={slide.href} className="home-hero-link">Découvrir l’expertise <ArrowUpRight size={18} /></Link>
-      </div>
+          ) : (
+            <section className="home-hero" aria-label={item.label}>
+              <div className="home-hero-images" aria-hidden="true">
+                <div className="home-hero-image is-active">
+                  <Image src={item.image} alt="" fill loading="eager" sizes="100vw" style={{ objectPosition: item.imagePosition }} />
+                </div>
+              </div>
+              <div className="home-hero-shade" aria-hidden="true" />
+              <div className="home-hero-content container-wide">
+                <div className="home-hero-eyebrow"><span>{String(index + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}</span>{item.label}</div>
+                <h2>{item.title.map((line) => <span key={line}>{line}</span>)}</h2>
+                <p>{item.text}</p>
+                <Link href={item.href} className="home-hero-link">Découvrir l’expertise <ArrowUpRight size={18} /></Link>
+              </div>
+              <a href="#content" className="home-hero-scroll"><span>Explorer</span><ArrowDown size={17} /></a>
+            </section>
+          )}
+        </div>
+      ))}
       <div className="home-hero-controls" aria-label="Choisir une image">
         {slides.map((item, index) => (
           <button
@@ -104,7 +123,6 @@ export function HomeHeroSlider() {
           aria-label={paused ? "Relancer le diaporama" : "Mettre le diaporama en pause"}
         >{paused ? <Play size={15} fill="currentColor" /> : <Pause size={15} fill="currentColor" />}</button>
       </div>
-      <a href="#content" className="home-hero-scroll"><span>Explorer</span><ArrowDown size={17} /></a>
-    </section>
+    </div>
   );
 }
