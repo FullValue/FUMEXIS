@@ -31,7 +31,6 @@ export function SiteFooter() {
         </div>
         <div>
           <h3>Contact</h3>
-          <span>{siteConfig.phone}</span>
           <span>{siteConfig.email}</span>
           <span>{siteConfig.address}</span>
           <Link href="/contact">Demander un devis <ArrowUpRight size={14} /></Link>
