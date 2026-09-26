@@ -1,21 +1,7 @@
 import { ClipboardCheck, DoorClosed, Droplets, Lightbulb, Siren, Wind } from "lucide-react";
+import type { ExpertiseTopic } from "@/data/expertise-topic";
 
-export type SecurityTopic = {
-  slug: string;
-  href: string;
-  label: string;
-  menuLabel: string;
-  title: string;
-  kicker: string;
-  intro: string;
-  image: string;
-  imageAlt: string;
-  statement: string;
-  explanation: string;
-  features: { title: string; text: string }[];
-  checks: string[];
-  icon: typeof Siren;
-};
+export type SecurityTopic = ExpertiseTopic;
 
 export const securityTopics: SecurityTopic[] = [
   {

@@ -7,6 +7,7 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
 import { expertiseLinks, navigation } from "@/data/site";
 import { securityTopics } from "@/data/security-topics";
+import { preventionTopics } from "@/data/prevention-topics";
 import { Logo } from "@/components/logo";
 
 export function SiteHeader() {
@@ -50,9 +51,12 @@ export function SiteHeader() {
                         </div>
                       </div>
                       <div className="service-mega-prevention">
-                        <span className="micro-label">02 / PRÉVENTION</span>
-                        <p>Préparer les équipes à reconnaître le risque et à agir.</p>
-                        <Link href="/formation">Formation incendie <ArrowUpRight size={16} /></Link>
+                        <div className="service-mega-heading"><span className="micro-label">02 / PRÉVENTION</span><Link href="/prevention">Voir l’ensemble <ArrowUpRight size={15} /></Link></div>
+                        <div className="service-mega-prevention-links">
+                          {preventionTopics.map((topic) => (
+                            <Link href={topic.href} key={topic.href}><span>{topic.menuLabel}</span><ArrowUpRight size={15} /></Link>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   ) : (
@@ -121,7 +125,8 @@ export function SiteHeader() {
               <span>Services / Sécurité</span>
               {securityTopics.map((topic) => <Link key={topic.href} href={topic.href} onClick={() => setMobileOpen(false)}>{topic.menuLabel}</Link>)}
               <span>Services / Prévention</span>
-              <Link href="/formation" onClick={() => setMobileOpen(false)}>Formation incendie</Link>
+              <Link href="/prevention" onClick={() => setMobileOpen(false)}>Tous les thèmes</Link>
+              {preventionTopics.map((topic) => <Link key={topic.href} href={topic.href} onClick={() => setMobileOpen(false)}>{topic.menuLabel}</Link>)}
             </div>
             <Link href="/contact" className="mobile-cta" onClick={() => setMobileOpen(false)}>Demander un devis <ArrowUpRight /></Link>
           </motion.div>

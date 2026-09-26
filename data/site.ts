@@ -35,9 +35,9 @@ export const expertiseLinks = [
     code: "02",
   },
   {
-    label: "Formation",
-    href: "/formation",
-    description: "Préparer les équipes à agir avec méthode.",
+    label: "Prévention",
+    href: "/prevention",
+    description: "Former les équipes et rendre les consignes lisibles.",
     code: "03",
   },
 ];

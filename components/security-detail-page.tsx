@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown, ArrowUpRight, Check } from "lucide-react";
@@ -5,12 +6,13 @@ import { SecurityTopicNav } from "@/components/security-topic-nav";
 import { SectionHeading } from "@/components/section-heading";
 import { FinalCta } from "@/components/final-cta";
 import { securityTopics, type SecurityTopic } from "@/data/security-topics";
+import type { ExpertiseTopic } from "@/data/expertise-topic";
 
-export function SecurityDetailPage({ topic }: { topic: SecurityTopic }) {
-  const related = securityTopics.filter((item) => item.slug !== topic.slug).slice(0, 3);
+export function TopicDetailPage({ topic, topics, navigation }: { topic: ExpertiseTopic; topics: ExpertiseTopic[]; navigation: ReactNode }) {
+  const related = topics.filter((item) => item.slug !== topic.slug).slice(0, 3);
   return (
     <>
-      <SecurityTopicNav currentPath={topic.href} />
+      {navigation}
       <section className="security-detail-hero">
         <Image src={topic.image} alt={topic.imageAlt} fill priority sizes="100vw" />
         <div className="security-detail-hero-shade" aria-hidden="true" />
@@ -37,7 +39,7 @@ export function SecurityDetailPage({ topic }: { topic: SecurityTopic }) {
 
       <section className="security-detail-features section-pad">
         <div className="container-wide">
-          <SectionHeading eyebrow="COMPRENDRE LE SYSTÈME" title={<>Trois points<br /><em>à relier.</em></>} />
+          <SectionHeading eyebrow="REPÈRES CLÉS" title={<>Trois points<br /><em>à relier.</em></>} />
           <div className="security-detail-feature-grid">
             {topic.features.map((feature, index) => (
               <article key={feature.title}>
@@ -55,7 +57,7 @@ export function SecurityDetailPage({ topic }: { topic: SecurityTopic }) {
           <div>
             <div className="eyebrow eyebrow--light"><span />SUR LE TERRAIN</div>
             <h2>Des points concrets<br /><em>à vérifier.</em></h2>
-            <p>La portée d’un contrôle dépend de l’installation et des règles applicables au bâtiment. Un relevé clair aide à prioriser les interventions.</p>
+            <p>La portée de la démarche dépend du site et de ses objectifs. Un bilan clair aide à décider des suites à donner.</p>
           </div>
           <ul>
             {topic.checks.map((check, index) => <li key={check}><span>{String(index + 1).padStart(2, "0")}</span>{check}<Check size={18} /></li>)}
@@ -65,7 +67,7 @@ export function SecurityDetailPage({ topic }: { topic: SecurityTopic }) {
 
       <section className="security-detail-related section-pad">
         <div className="container-wide">
-          <SectionHeading eyebrow="EXPLORER" title={<>Les autres maillons<br /><em>de la sécurité.</em></>} />
+          <SectionHeading eyebrow="EXPLORER" title={<>D’autres sujets<br /><em>à découvrir.</em></>} />
           <div className="security-related-grid">
             {related.map((item) => (
               <Link href={item.href} key={item.slug} className="security-related-card">
@@ -81,4 +83,8 @@ export function SecurityDetailPage({ topic }: { topic: SecurityTopic }) {
       <FinalCta title={<>Un bâtiment, des usages.<br />Une réponse à construire.</>} />
     </>
   );
+}
+
+export function SecurityDetailPage({ topic }: { topic: SecurityTopic }) {
+  return <TopicDetailPage topic={topic} topics={securityTopics} navigation={<SecurityTopicNav currentPath={topic.href} />} />;
 }

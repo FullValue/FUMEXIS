@@ -102,6 +102,11 @@ em { font-weight: 390; }
 .service-mega-prevention p { margin: 2.2rem 0 auto; font-family: var(--display); font-size: 2.1rem; line-height: 1.02; text-transform: uppercase; }
 .service-mega-prevention a { display: flex; width: 100%; margin-top: 2rem; padding-top: 1rem; align-items: center; justify-content: space-between; border-top: 1px solid rgba(255,255,255,.25); font-size: .7rem; font-weight: 750; letter-spacing: .07em; text-transform: uppercase; }
 .service-mega-prevention a:hover { color: #ff777c; }
+.service-mega-prevention .service-mega-heading { width: 100%; }
+.service-mega-prevention .service-mega-heading > a { width: auto; margin: 0; padding: 0; border: 0; white-space: nowrap; }
+.service-mega-prevention-links { display: grid; width: 100%; margin-top: 1.3rem; }
+.service-mega-prevention .service-mega-prevention-links a { display: flex; min-height: 3.45rem; margin: 0; padding: .55rem 0; align-items: center; justify-content: space-between; gap: .7rem; border-top: 1px solid rgba(255,255,255,.22); font-family: var(--display); font-size: 1.15rem; font-weight: 620; letter-spacing: 0; line-height: 1; text-transform: uppercase; }
+.service-mega-prevention-links a svg { flex: 0 0 auto; }
 .mega-intro { padding: .5rem 1.5rem .5rem .2rem; border-right: 1px solid var(--line); }
 .mega-intro .micro-label { color: var(--red); }
 .mega-intro p { margin: 1.25rem 0 0; font-family: var(--display); font-size: 1.65rem; font-weight: 560; line-height: 1.05; text-transform: uppercase; }
@@ -124,10 +129,12 @@ em { font-weight: 390; }
 
 /* Security topics */
 .security-topic-nav { position: sticky; z-index: 80; top: calc(var(--security-nav-sticky-offset) * -1); padding-top: 6.3rem; background: var(--red); color: white; }
+.prevention-topic-nav { background: #343a3d; }
 .security-topic-nav-inner { display: flex; width: 100%; max-width: 1800px; margin: 0 auto; }
 .security-topic-home { display: flex; width: 13rem; min-width: 13rem; height: 7.4rem; padding: 1rem 1.3rem; align-items: center; gap: .7rem; border-right: 1px solid rgba(255,255,255,.32); font-family: var(--display); font-size: 1.75rem; font-weight: 690; line-height: .88; text-transform: uppercase; }
 .security-topic-home svg { flex: 0 0 auto; }
 .security-topic-home.is-active, .security-topic-home:hover { background: rgba(0,0,0,.13); }
+.prevention-topic-nav .security-topic-home { font-size: 1.55rem; }
 .security-topic-scroll { display: flex; min-width: 0; flex: 1; overflow-x: auto; scrollbar-width: none; scroll-snap-type: x proximity; }
 .security-topic-scroll::-webkit-scrollbar { display: none; }
 .security-topic-link { position: relative; display: flex; min-width: 9.2rem; height: 7.4rem; padding: .85rem .65rem .7rem; flex: 1 0 9.2rem; flex-direction: column; align-items: center; justify-content: center; gap: .55rem; scroll-snap-align: start; text-align: center; transition: background .2s; }
@@ -789,6 +796,7 @@ em { font-weight: 390; }
   .article-sources { margin-left: 2.6rem; }
   .security-topic-nav { padding-top: 5.15rem; }
   .security-topic-home { width: 8.3rem; min-width: 8.3rem; height: 6rem; padding: .8rem; gap: .35rem; font-size: 1.25rem; }
+  .prevention-topic-nav .security-topic-home { font-size: 1.05rem; }
   .security-topic-home svg { width: 21px; }
   .security-topic-link { min-width: 8.7rem; height: 6rem; flex-basis: 8.7rem; gap: .35rem; }
   .security-topic-link span { font-size: .58rem; }

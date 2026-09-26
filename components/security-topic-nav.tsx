@@ -2,10 +2,19 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
-import { Flame } from "lucide-react";
+import { Flame, HeartPulse, type LucideIcon } from "lucide-react";
 import { securityTopics } from "@/data/security-topics";
+import { preventionTopics } from "@/data/prevention-topics";
+import type { ExpertiseTopic } from "@/data/expertise-topic";
 
-export function SecurityTopicNav({ currentPath }: { currentPath: string }) {
+function TopicNav({ currentPath, homeHref, homeTitle, HomeIcon, topics, prevention = false }: {
+  currentPath: string;
+  homeHref: string;
+  homeTitle: React.ReactNode;
+  HomeIcon: LucideIcon;
+  topics: ExpertiseTopic[];
+  prevention?: boolean;
+}) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -15,18 +24,18 @@ export function SecurityTopicNav({ currentPath }: { currentPath: string }) {
   }, [currentPath]);
 
   return (
-    <nav className="security-topic-nav" aria-label="Thèmes de sécurité incendie">
+    <nav className={prevention ? "security-topic-nav prevention-topic-nav" : "security-topic-nav"} aria-label={prevention ? "Thèmes de prévention" : "Thèmes de sécurité incendie"}>
       <div className="security-topic-nav-inner">
         <Link
-          href="/securite-incendie"
-          className={currentPath === "/securite-incendie" ? "is-active security-topic-home" : "security-topic-home"}
-          aria-current={currentPath === "/securite-incendie" ? "page" : undefined}
+          href={homeHref}
+          className={currentPath === homeHref ? "is-active security-topic-home" : "security-topic-home"}
+          aria-current={currentPath === homeHref ? "page" : undefined}
         >
-          <Flame size={27} strokeWidth={1.55} />
-          <span>Sécurité<br />incendie</span>
+          <HomeIcon size={27} strokeWidth={1.55} />
+          <span>{homeTitle}</span>
         </Link>
         <div className="security-topic-scroll" ref={scrollRef}>
-          {securityTopics.map((topic) => {
+          {topics.map((topic) => {
             const Icon = topic.icon;
             return (
               <Link
@@ -44,4 +53,12 @@ export function SecurityTopicNav({ currentPath }: { currentPath: string }) {
       </div>
     </nav>
   );
+}
+
+export function SecurityTopicNav({ currentPath }: { currentPath: string }) {
+  return <TopicNav currentPath={currentPath} homeHref="/securite-incendie" homeTitle={<>Sécurité<br />incendie</>} HomeIcon={Flame} topics={securityTopics} />;
+}
+
+export function PreventionTopicNav({ currentPath }: { currentPath: string }) {
+  return <TopicNav currentPath={currentPath} homeHref="/prevention" homeTitle="Prévention" HomeIcon={HeartPulse} topics={preventionTopics} prevention />;
 }
