@@ -87,6 +87,12 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                 ) : null}
               </section>
             ))}
+            {article.sources?.length ? (
+              <div className="article-sources">
+                <h2>Sources utiles</h2>
+                <ul>{article.sources.map((source) => <li key={source.url}><a href={source.url} target="_blank" rel="noreferrer">{source.title} <ArrowUpRight size={16} /></a></li>)}</ul>
+              </div>
+            ) : null}
             <div className="article-disclaimer">
               <strong>Un contexte, une réponse.</strong>
               <p>Ces repères sont généraux. L’analyse d’un professionnel permet d’adapter les équipements, la maintenance ou la formation à la configuration réelle de votre établissement.</p>

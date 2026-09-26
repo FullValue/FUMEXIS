@@ -101,7 +101,7 @@ export default function Home() {
             <ArrowLink href="/blog" variant="dark">Voir les {articles.length} articles</ArrowLink>
           </div>
           <div className="home-blog-grid">
-            {articles.slice(0, 3).map((article) => <BlogCard key={article.slug} article={article} />)}
+            {articles.filter((article) => article.category === "Sécurité incendie" || article.category === "Désenfumage").slice(0, 3).map((article) => <BlogCard key={article.slug} article={article} />)}
           </div>
         </div>
       </section>

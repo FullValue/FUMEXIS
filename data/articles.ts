@@ -1,3 +1,5 @@
+import { expandedArticles } from "@/data/expanded-articles";
+
 export type ArticleSection = {
   heading: string;
   paragraphs: string[];
@@ -9,7 +11,7 @@ export type Article = {
   title: string;
   deck: string;
   excerpt: string;
-  category: "Sécurité incendie" | "Désenfumage" | "Formation" | "Maintenance";
+  category: "Sécurité incendie" | "Désenfumage" | "Formation" | "Maintenance" | "Sûreté" | "Organisation";
   publishedAt: string;
   displayDate: string;
   readingTime: string;
@@ -17,9 +19,10 @@ export type Article = {
   imageAlt: string;
   takeaways: string[];
   sections: ArticleSection[];
+  sources?: { title: string; url: string }[];
 };
 
-export const articles: Article[] = [
+const existingArticles: Article[] = [
   {
     slug: "choisir-extincteurs-entreprise",
     title: "Comment choisir les extincteurs adaptés à son entreprise ?",
@@ -389,5 +392,7 @@ export const articles: Article[] = [
     ],
   },
 ];
+
+export const articles: Article[] = [existingArticles[0], ...expandedArticles, ...existingArticles.slice(1)];
 
 export const getArticle = (slug: string) => articles.find((article) => article.slug === slug);
