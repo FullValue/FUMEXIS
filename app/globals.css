@@ -365,6 +365,7 @@ em { font-weight: 390; }
 .smoke-side li svg { width: 15px; color: var(--red); }
 .fire-feature { background: var(--paper); }
 .fire-grid { display: grid; grid-template-columns: .72fr 1.28fr; gap: clamp(3rem, 9vw, 11rem); }
+.fire-copy { min-width: 0; }
 .fire-index { display: flex; min-height: 520px; padding: 2rem; flex-direction: column; justify-content: space-between; background: var(--red); color: white; }
 .fire-index > span { font-size: .68rem; letter-spacing: .14em; }
 .fire-index strong { font-family: var(--display); font-size: clamp(4rem, 7vw, 8rem); font-weight: 650; line-height: .78; writing-mode: vertical-rl; transform: rotate(180deg); }
@@ -769,7 +770,7 @@ em { font-weight: 390; }
   .smoke-feature { min-height: 820px; }
   .smoke-image img { object-position: 58% center; }
   .smoke-content h2 { font-size: clamp(4rem, 19vw, 5.4rem); }
-  .fire-grid { grid-template-columns: 1fr; }
+  .fire-grid { grid-template-columns: minmax(0, 1fr); }
   .fire-index { display: grid; min-height: 8rem; grid-template-columns: 1fr auto; align-items: end; }
   .fire-index strong { font-size: 3rem; line-height: .85; writing-mode: initial; transform: none; }
   .fire-links a { grid-template-columns: 2rem 1fr auto; font-size: 1.55rem; }
