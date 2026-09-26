@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { ArrowUpRight, CheckCircle2, LoaderCircle } from "lucide-react";
+import { contactNeeds } from "@/data/contact-needs";
 
 type FormState = "idle" | "loading" | "success" | "error";
 
@@ -56,8 +57,7 @@ export function ContactForm() {
           <span>Type de besoin *</span>
           <select name="need" required defaultValue="">
             <option value="" disabled>Sélectionner</option>
-            <option>Sécurité incendie</option><option>Désenfumage</option>
-            <option>Formation incendie</option><option>Maintenance</option><option>Autre</option>
+            {contactNeeds.map((need) => <option key={need} value={need}>{need}</option>)}
           </select>
         </label>
         <label className="form-full"><span>Votre message *</span><textarea name="message" rows={6} required minLength={20} placeholder="Parlez-nous du bâtiment, des équipements concernés et de votre besoin…" /></label>

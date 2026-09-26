@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { contactNeeds } from "@/data/contact-needs";
 
 type ContactPayload = {
   name?: string;
@@ -12,7 +13,7 @@ type ContactPayload = {
 };
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const needs = new Set(["Sécurité incendie", "Désenfumage", "Formation incendie", "Maintenance", "Autre"]);
+const needs = new Set<string>(contactNeeds);
 
 export async function POST(request: Request) {
   let body: ContactPayload;
