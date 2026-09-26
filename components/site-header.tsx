@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
+import { ArrowUpRight, ChevronDown, Flame, HeartPulse, Menu, X } from "lucide-react";
 import { expertiseLinks, navigation } from "@/data/site";
 import { securityTopics } from "@/data/security-topics";
 import { preventionTopics } from "@/data/prevention-topics";
@@ -43,19 +43,21 @@ export function SiteHeader() {
                   {item.mega === "services" ? (
                     <div className="mega-panel mega-panel--services">
                       <div className="service-mega-security">
-                        <div className="service-mega-heading"><span className="micro-label">01 / SÉCURITÉ</span><Link href="/securite-incendie">Voir l’ensemble <ArrowUpRight size={15} /></Link></div>
+                        <div className="service-mega-heading"><span className="micro-label"><Flame size={21} strokeWidth={1.6} aria-hidden="true" />01 / SÉCURITÉ</span><Link href="/securite-incendie">Voir l’ensemble <ArrowUpRight size={15} /></Link></div>
                         <div className="service-mega-links">
-                          {securityTopics.map((topic) => (
-                            <Link href={topic.href} key={topic.href}><span>{topic.menuLabel}</span><ArrowUpRight size={15} /></Link>
-                          ))}
+                          {securityTopics.map((topic) => {
+                            const Icon = topic.icon;
+                            return <Link href={topic.href} key={topic.href}><Icon className="service-mega-link-icon" size={25} strokeWidth={1.55} aria-hidden="true" /><span>{topic.menuLabel}</span><ArrowUpRight className="service-mega-link-arrow" size={15} aria-hidden="true" /></Link>;
+                          })}
                         </div>
                       </div>
                       <div className="service-mega-prevention">
-                        <div className="service-mega-heading"><span className="micro-label">02 / PRÉVENTION</span><Link href="/prevention">Voir l’ensemble <ArrowUpRight size={15} /></Link></div>
+                        <div className="service-mega-heading"><span className="micro-label"><HeartPulse size={21} strokeWidth={1.6} aria-hidden="true" />02 / PRÉVENTION</span><Link href="/prevention">Voir l’ensemble <ArrowUpRight size={15} /></Link></div>
                         <div className="service-mega-prevention-links">
-                          {preventionTopics.map((topic) => (
-                            <Link href={topic.href} key={topic.href}><span>{topic.menuLabel}</span><ArrowUpRight size={15} /></Link>
-                          ))}
+                          {preventionTopics.map((topic) => {
+                            const Icon = topic.icon;
+                            return <Link href={topic.href} key={topic.href}><Icon className="service-mega-link-icon" size={24} strokeWidth={1.55} aria-hidden="true" /><span>{topic.menuLabel}</span><ArrowUpRight className="service-mega-link-arrow" size={15} aria-hidden="true" /></Link>;
+                          })}
                         </div>
                       </div>
                     </div>
@@ -123,10 +125,10 @@ export function SiteHeader() {
             </div>
             <div className="mobile-service-links">
               <span>Services / Sécurité</span>
-              {securityTopics.map((topic) => <Link key={topic.href} href={topic.href} onClick={() => setMobileOpen(false)}>{topic.menuLabel}</Link>)}
+              {securityTopics.map((topic) => { const Icon = topic.icon; return <Link key={topic.href} href={topic.href} onClick={() => setMobileOpen(false)}><Icon size={18} strokeWidth={1.6} aria-hidden="true" />{topic.menuLabel}</Link>; })}
               <span>Services / Prévention</span>
               <Link href="/prevention" onClick={() => setMobileOpen(false)}>Tous les thèmes</Link>
-              {preventionTopics.map((topic) => <Link key={topic.href} href={topic.href} onClick={() => setMobileOpen(false)}>{topic.menuLabel}</Link>)}
+              {preventionTopics.map((topic) => { const Icon = topic.icon; return <Link key={topic.href} href={topic.href} onClick={() => setMobileOpen(false)}><Icon size={18} strokeWidth={1.6} aria-hidden="true" />{topic.menuLabel}</Link>; })}
             </div>
             <Link href="/contact" className="mobile-cta" onClick={() => setMobileOpen(false)}>Demander un devis <ArrowUpRight /></Link>
           </motion.div>
