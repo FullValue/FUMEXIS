@@ -15,7 +15,7 @@ export const siteConfig = {
 export const navigation = [
   { label: "Accueil", href: "/" },
   { label: "Expertises", href: "/securite-incendie", mega: true },
-  { label: "Services", href: "/services" },
+  { label: "Services", href: "/services", mega: "services" },
   { label: "Conseils", href: "/blog" },
   { label: "À propos", href: "/a-propos" },
   { label: "Contact", href: "/contact" },

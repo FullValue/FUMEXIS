@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
 import { expertiseLinks, navigation } from "@/data/site";
+import { securityTopics } from "@/data/security-topics";
 import { Logo } from "@/components/logo";
 
 export function SiteHeader() {
@@ -38,21 +39,39 @@ export function SiteHeader() {
                   <Link href={item.href} className={pathname === item.href ? "active" : ""}>
                     {item.label}<ChevronDown size={13} />
                   </Link>
-                  <div className="mega-panel">
-                    <div className="mega-intro">
-                      <span className="micro-label">EXPERTISES / 03</span>
-                      <p>Une lecture globale du bâtiment, de ses usages et de ses risques.</p>
+                  {item.mega === "services" ? (
+                    <div className="mega-panel mega-panel--services">
+                      <div className="service-mega-security">
+                        <div className="service-mega-heading"><span className="micro-label">01 / SÉCURITÉ</span><Link href="/securite-incendie">Voir l’ensemble <ArrowUpRight size={15} /></Link></div>
+                        <div className="service-mega-links">
+                          {securityTopics.map((topic) => (
+                            <Link href={topic.href} key={topic.href}><span>{topic.menuLabel}</span><ArrowUpRight size={15} /></Link>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="service-mega-prevention">
+                        <span className="micro-label">02 / PRÉVENTION</span>
+                        <p>Préparer les équipes à reconnaître le risque et à agir.</p>
+                        <Link href="/formation">Formation incendie <ArrowUpRight size={16} /></Link>
+                      </div>
                     </div>
-                    <div className="mega-links">
-                      {expertiseLinks.map((expertise) => (
-                        <Link href={expertise.href} key={expertise.href}>
-                          <small>{expertise.code}</small>
-                          <span>{expertise.label}</span>
-                          <ArrowUpRight size={17} />
-                        </Link>
-                      ))}
+                  ) : (
+                    <div className="mega-panel">
+                      <div className="mega-intro">
+                        <span className="micro-label">EXPERTISES / 03</span>
+                        <p>Une lecture globale du bâtiment, de ses usages et de ses risques.</p>
+                      </div>
+                      <div className="mega-links">
+                        {expertiseLinks.map((expertise) => (
+                          <Link href={expertise.href} key={expertise.href}>
+                            <small>{expertise.code}</small>
+                            <span>{expertise.label}</span>
+                            <ArrowUpRight size={17} />
+                          </Link>
+                        ))}
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               ) : (
                 <Link key={item.href} href={item.href} className={pathname === item.href ? "active" : ""}>
@@ -97,6 +116,12 @@ export function SiteHeader() {
             </div>
             <div className="mobile-expertise-links">
               {expertiseLinks.slice(1).map((item) => <Link key={item.href} href={item.href} onClick={() => setMobileOpen(false)}>{item.label}</Link>)}
+            </div>
+            <div className="mobile-service-links">
+              <span>Services / Sécurité</span>
+              {securityTopics.map((topic) => <Link key={topic.href} href={topic.href} onClick={() => setMobileOpen(false)}>{topic.menuLabel}</Link>)}
+              <span>Services / Prévention</span>
+              <Link href="/formation" onClick={() => setMobileOpen(false)}>Formation incendie</Link>
             </div>
             <Link href="/contact" className="mobile-cta" onClick={() => setMobileOpen(false)}>Demander un devis <ArrowUpRight /></Link>
           </motion.div>

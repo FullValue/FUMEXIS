@@ -1,0 +1,145 @@
+import { ClipboardCheck, DoorClosed, Droplets, Lightbulb, Siren, Wind } from "lucide-react";
+
+export type SecurityTopic = {
+  slug: string;
+  href: string;
+  label: string;
+  menuLabel: string;
+  title: string;
+  kicker: string;
+  intro: string;
+  image: string;
+  imageAlt: string;
+  statement: string;
+  explanation: string;
+  features: { title: string; text: string }[];
+  checks: string[];
+  icon: typeof Siren;
+};
+
+export const securityTopics: SecurityTopic[] = [
+  {
+    slug: "ssi-sdi-cmsi",
+    href: "/securite-incendie/ssi-sdi-cmsi",
+    label: "SSI · SDI / CMSI",
+    menuLabel: "Système de sécurité incendie",
+    title: "Détecter. Alerter. Mettre en sécurité.",
+    kicker: "01 / SYSTÈME DE SÉCURITÉ INCENDIE",
+    intro: "Le SSI relie la détection d’un départ de feu aux actions prévues pour protéger les occupants et organiser l’évacuation.",
+    image: "/images/securite/ssi.jpg",
+    imageAlt: "Tableau de sécurité incendie dans un bâtiment professionnel",
+    statement: "Une chaîne d’actions qui doit rester cohérente.",
+    explanation: "Le système de détection incendie recueille les informations des détecteurs et déclencheurs manuels. Selon la configuration du bâtiment, le centralisateur de mise en sécurité pilote ensuite des fonctions comme l’alarme, le compartimentage ou le désenfumage. L’enjeu est de faire correspondre chaque signal au bon scénario.",
+    features: [
+      { title: "Détection et signalisation", text: "Détecteurs, déclencheurs manuels et équipement de contrôle identifient et localisent l’alarme." },
+      { title: "Mise en sécurité", text: "Le CMSI transmet les commandes aux dispositifs concernés par le scénario du bâtiment." },
+      { title: "Lecture de l’existant", text: "Plans, zones, interfaces et historique des essais aident à préciser le périmètre d’un projet ou d’une reprise." },
+    ],
+    checks: ["Cohérence des zones de détection et de mise en sécurité", "Accessibilité des commandes et lisibilité des informations", "Essais des liaisons avec les dispositifs commandés", "Traçabilité des vérifications et des anomalies"],
+    icon: Siren,
+  },
+  {
+    slug: "desenfumage",
+    href: "/desenfumage",
+    label: "Désenfumage",
+    menuLabel: "Désenfumage naturel et mécanique",
+    title: "Donner aux fumées une voie de sortie.",
+    kicker: "02 / DÉSENFUMAGE",
+    intro: "Ouvrants, amenées d’air, extracteurs et commandes sont pensés ensemble pour faciliter l’évacuation et l’intervention.",
+    image: "/images/desenfumage-toiture.jpg",
+    imageAlt: "Ouvrants de désenfumage sur la toiture d’un bâtiment",
+    statement: "Le parcours de l’air compte autant que l’exutoire.",
+    explanation: "Le désenfumage naturel utilise des ouvertures hautes et des entrées d’air basses. Le désenfumage mécanique s’appuie sur une extraction motorisée et des réseaux adaptés aux volumes. Le choix dépend de l’architecture, des circulations et du cadre applicable au bâtiment.",
+    features: [
+      { title: "Évacuation naturelle", text: "Exutoires et ouvrants créent un chemin pour les fumées avec des amenées d’air coordonnées." },
+      { title: "Extraction mécanique", text: "Ventilateurs, volets et conduits assurent le balayage des volumes concernés." },
+      { title: "Intégration au bâtiment", text: "Les accès, commandes, réseaux et contraintes de toiture sont étudiés comme un ensemble." },
+    ],
+    checks: ["Implantation et accès aux ouvrants", "État des amenées d’air et des réseaux", "Fonctionnement des commandes et asservissements", "Entretien des organes et suivi des essais"],
+    icon: Wind,
+  },
+  {
+    slug: "controle-desenfumage",
+    href: "/securite-incendie/controle-desenfumage",
+    label: "Contrôle du désenfumage",
+    menuLabel: "Contrôle du désenfumage",
+    title: "Vérifier toute la séquence.",
+    kicker: "03 / CONTRÔLE DU DÉSENFUMAGE",
+    intro: "Un essai utile ne s’arrête pas à l’ouverture d’un exutoire : il suit la commande, le mouvement et le retour à l’état normal.",
+    image: "/images/securite/controle-desenfumage.jpg",
+    imageAlt: "Essai d’une commande de désenfumage dans une cage d’escalier",
+    statement: "Un système contrôlé est un système dont on comprend la réponse.",
+    explanation: "La vérification porte sur les commandes manuelles ou automatiques, les ouvrants, les volets, les extracteurs et les éventuels retours d’état. Chaque essai doit être adapté au site et consigné pour que les écarts puissent être corrigés et suivis.",
+    features: [
+      { title: "Avant l’essai", text: "Identifier les zones, les accès, les organes et les contraintes d’exploitation." },
+      { title: "Pendant la manœuvre", text: "Observer la chaîne de déclenchement et le comportement des éléments associés." },
+      { title: "Après l’essai", text: "Remettre le système en position normale et documenter les anomalies constatées." },
+    ],
+    checks: ["Accessibilité et identification des commandes", "Ouverture et fermeture des dispositifs", "Fonctionnement des ventilateurs et volets selon le système", "Compte rendu et suivi des actions correctives"],
+    icon: ClipboardCheck,
+  },
+  {
+    slug: "compartimentage-portes-coupe-feu",
+    href: "/securite-incendie/compartimentage-portes-coupe-feu",
+    label: "Compartimentage",
+    menuLabel: "Portes et compartimentage",
+    title: "Limiter la propagation.",
+    kicker: "04 / COMPARTIMENTAGE",
+    intro: "Portes, parois et clapets contribuent à contenir le feu et les fumées dans la zone concernée.",
+    image: "/images/securite/compartimentage.jpg",
+    imageAlt: "Porte coupe-feu fermée dans un bâtiment professionnel",
+    statement: "Une séparation n’est efficace que si ses passages le sont aussi.",
+    explanation: "Le compartimentage organise le bâtiment en volumes distincts. Ses portes et clapets doivent conserver leur fonction malgré les usages quotidiens, les passages de réseaux et les travaux. Lorsqu’ils sont commandés, leur articulation avec le SSI fait partie de la lecture globale.",
+    features: [
+      { title: "Portes coupe-feu", text: "Leur fermeture, leurs joints et leurs dispositifs de retenue participent à la continuité de la séparation." },
+      { title: "Clapets et traversées", text: "Les réseaux techniques ne doivent pas créer une voie de propagation entre deux zones." },
+      { title: "Circulations protégées", text: "Escaliers et dégagements demandent une attention particulière pour préserver les cheminements." },
+    ],
+    checks: ["État des portes, huisseries et ferme-portes", "Absence d’obstacle à la fermeture", "Continuité des parois et traitement des traversées", "Commande et essai des dispositifs asservis"],
+    icon: DoorClosed,
+  },
+  {
+    slug: "eclairage-securite-baes-baeh",
+    href: "/securite-incendie/eclairage-securite-baes-baeh",
+    label: "Éclairage BAES / BAEH",
+    menuLabel: "Éclairage de sécurité",
+    title: "Garder la sortie lisible.",
+    kicker: "05 / ÉCLAIRAGE DE SÉCURITÉ",
+    intro: "Quand l’éclairage normal disparaît, les blocs de sécurité aident les occupants à reconnaître les cheminements et les issues.",
+    image: "/images/securite/eclairage-securite.jpg",
+    imageAlt: "Bloc d’éclairage de sécurité dans un couloir d’évacuation",
+    statement: "L’orientation doit rester évidente dans les circulations.",
+    explanation: "L’éclairage de sécurité peut assurer le balisage de l’évacuation et, selon les locaux, un éclairage d’ambiance. BAES et BAEH répondent à des contextes d’usage différents. Leur implantation, leur visibilité et leur autonomie se lisent à l’échelle du parcours des occupants.",
+    features: [
+      { title: "Évacuation", text: "Les blocs rendent perceptibles les sorties, changements de direction et obstacles." },
+      { title: "Ambiance", text: "Dans certains espaces, un éclairage complémentaire limite la perte brutale de repères." },
+      { title: "Suivi", text: "L’état des blocs, l’alimentation et les essais doivent être documentés dans le temps." },
+    ],
+    checks: ["Lisibilité du balisage depuis les cheminements", "État et propreté des blocs", "Fonctionnement en l’absence de l’alimentation normale", "Autonomie et traçabilité des contrôles"],
+    icon: Lightbulb,
+  },
+  {
+    slug: "colonnes-incendie-ria",
+    href: "/securite-incendie/colonnes-incendie-ria",
+    label: "Colonnes & RIA",
+    menuLabel: "Colonnes incendie et RIA",
+    title: "Rendre l’eau disponible.",
+    kicker: "06 / COLONNES INCENDIE ET RIA",
+    intro: "Colonnes sèches, colonnes en charge et robinets d’incendie armés répondent à des usages distincts au sein du bâtiment.",
+    image: "/images/securite/ria.jpg",
+    imageAlt: "Robinet d’incendie armé rouge dans un bâtiment industriel",
+    statement: "Un réseau de secours doit être accessible et prêt à servir.",
+    explanation: "Les colonnes permettent l’alimentation en eau des secours aux niveaux desservis. Un RIA constitue un moyen d’intervention fixe sur un début de feu, dans les conditions prévues par l’organisation du site. Les vérifications portent sur l’identification, l’accès, l’état des composants et le comportement hydraulique.",
+    features: [
+      { title: "Colonnes sèches", text: "Un réseau fixe que les secours alimentent au moment de l’intervention." },
+      { title: "Colonnes en charge", text: "Une installation maintenue en eau, avec ses organes et conditions d’alimentation propres." },
+      { title: "RIA", text: "Un tuyau semi-rigide et son robinet, installés à un emplacement défini pour le bâtiment." },
+    ],
+    checks: ["Repérage et accessibilité des prises et raccords", "État des tuyaux, robinets et organes", "Essais de fonctionnement et mesures adaptées", "Compte rendu des écarts et maintenance planifiée"],
+    icon: Droplets,
+  },
+];
+
+export function getSecurityTopic(slug: string) {
+  return securityTopics.find((topic) => topic.slug === slug);
+}

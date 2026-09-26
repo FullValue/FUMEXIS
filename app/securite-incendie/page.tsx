@@ -1,36 +1,64 @@
 import type { Metadata } from "next";
-import { ExpertisePage } from "@/components/expertise-page";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import { PageHero } from "@/components/page-hero";
+import { SecurityTopicNav } from "@/components/security-topic-nav";
+import { SectionHeading } from "@/components/section-heading";
+import { FinalCta } from "@/components/final-cta";
+import { securityTopics } from "@/data/security-topics";
 
 export const metadata: Metadata = {
   title: "Sécurité incendie",
-  description: "Installation, vérification et maintenance des extincteurs et équipements de protection incendie.",
+  description: "Parcourez les solutions de sécurité incendie : SSI, désenfumage, compartimentage, éclairage de sécurité et réseaux d’eau incendie.",
   alternates: { canonical: "/securite-incendie" },
 };
 
 export default function SecuriteIncendiePage() {
-  return <ExpertisePage
-    eyebrow="EXPERTISE / SÉCURITÉ INCENDIE"
-    title="Prévenir le risque."
-    italic="Rendre l’action possible."
-    intro="Des équipements cohérents avec les risques du site, installés avec précision et suivis dans la durée."
-    image="/images/hero-fumexis.jpg"
-    statement="La protection incendie n’est pas une collection d’équipements. C’est un ensemble qui doit rester compréhensible et disponible."
-    body="FUMEXIS intervient de l’étude à la maintenance pour structurer cet ensemble autour des risques, des usages et des circulations du bâtiment. Chaque préconisation cherche l’équilibre entre efficacité technique, simplicité d’exploitation et qualité du suivi."
-    solutions={[
-      { title: "Extincteurs", text: "Sélection, implantation, installation et maintenance des appareils.", href: "/services/extincteurs" },
-      { title: "Installation", text: "Implantation des équipements selon les risques, les usages et les circulations du bâtiment." },
-      { title: "Entretien & vérification", text: "Contrôles structurés pour identifier l’état, l’accessibilité et les besoins d’intervention." },
-      { title: "Maintenance préventive", text: "Opérations planifiées pour préserver la disponibilité des équipements.", href: "/services/maintenance" },
-      { title: "Maintenance corrective", text: "Traitement des défauts et suivi clair des actions réalisées.", href: "/services/maintenance" },
-      { title: "Protection incendie", text: "Une approche cohérente des équipements et de leur environnement d’utilisation." },
-    ]}
-    stepsTitle="Des équipements identifiés, accessibles et maintenus."
-    points={["Installation", "Vérification", "Maintenance préventive", "Maintenance corrective"]}
-    faq={[
-      { question: "Pouvez-vous équiper un bâtiment existant ?", answer: "Oui. L’intervention commence par une analyse de l’existant et des usages afin de construire une proposition adaptée au site." },
-      { question: "FUMEXIS reprend-il la maintenance d’un parc existant ?", answer: "Oui. Un état initial permet d’identifier le parc, les informations disponibles et les premières actions à organiser." },
-      { question: "Quels types de bâtiments sont concernés ?", answer: "FUMEXIS peut accompagner des ERP, bureaux, commerces, copropriétés, entrepôts, sites industriels et autres locaux professionnels." },
-      { question: "Comment organiser une visite technique ?", answer: "Transmettez les informations disponibles via la page contact. Le périmètre et les accès pourront être précisés avant l’intervention." },
-    ]}
-  />;
+  return (
+    <>
+      <SecurityTopicNav currentPath="/securite-incendie" />
+      <PageHero
+        eyebrow="EXPERTISE / SÉCURITÉ INCENDIE"
+        title={<>Chaque maillon<br /><em>compte.</em></>}
+        text="Détecter, guider, contenir et faciliter l’intervention : explorez les dispositifs qui forment la sécurité d’un bâtiment."
+        image="/images/securite/ssi.jpg"
+        compact
+      />
+      <section className="security-landing-intro section-pad" id="content">
+        <div className="container-wide security-landing-intro-grid">
+          <div className="eyebrow"><span />UNE VISION D’ENSEMBLE</div>
+          <h2>Un dispositif seul ne raconte jamais toute l’histoire.</h2>
+          <p>La sécurité incendie dépend de la façon dont les équipements fonctionnent ensemble et des personnes qui les utilisent. Choisissez un sujet pour comprendre son rôle, ses composants et les points à suivre dans le temps.</p>
+        </div>
+      </section>
+      <section className="security-landing-topics section-pad">
+        <div className="container-wide">
+          <SectionHeading eyebrow="LES THÈMES" title={<>Explorer chaque<br /><em>fonction essentielle.</em></>} />
+          <div className="security-topic-grid">
+            {securityTopics.map((topic, index) => {
+              const Icon = topic.icon;
+              return (
+                <Link href={topic.href} key={topic.slug} className="security-topic-card">
+                  <Image src={topic.image} alt="" fill sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 33vw" />
+                  <span className="security-topic-card-shade" aria-hidden="true" />
+                  <div className="security-topic-card-top"><span>{String(index + 1).padStart(2, "0")} / 06</span><Icon size={24} strokeWidth={1.5} /></div>
+                  <div className="security-topic-card-copy"><h3>{topic.menuLabel}</h3><p>{topic.intro}</p></div>
+                  <ArrowUpRight className="security-topic-card-arrow" size={23} />
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+      <section className="security-landing-close section-pad">
+        <div className="container-wide">
+          <span className="micro-label">DE LA LECTURE DU SITE AU SUIVI</span>
+          <p>Un bâtiment a ses propres circulations, contraintes techniques et usages. C’est cette réalité qui guide le choix des solutions et l’organisation des vérifications.</p>
+          <Link href="/contact">Parler de votre projet <ArrowUpRight size={18} /></Link>
+        </div>
+      </section>
+      <FinalCta />
+    </>
+  );
 }
