@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { MoveRight } from "lucide-react";
 import { HomeHeroSlider } from "@/components/home-hero-slider";
 import { ExpertiseCarousel } from "@/components/expertise-carousel";
 import { SectionHeading } from "@/components/section-heading";
@@ -13,6 +15,7 @@ import { defaultFaq, sectors } from "@/data/site";
 import { additionalServices, services } from "@/data/services";
 import { additionalServiceVisuals, serviceVisuals } from "@/data/service-visuals";
 import { articles } from "@/data/articles";
+import { securityTopics } from "@/data/security-topics";
 
 export const metadata: Metadata = {
   title: "Sécurité incendie, désenfumage et formation",
@@ -60,6 +63,21 @@ export default function Home() {
               const visual = additionalServiceVisuals[index];
               return <AdditionalServiceCard key={service.title} service={service} index={services.length + index} image={visual.src} imagePosition={visual.position} />;
             })}
+          </div>
+        </div>
+      </section>
+
+      <section className="fire-feature section-pad">
+        <div className="container-wide fire-grid">
+          <Reveal className="fire-index"><span>01 — 06</span><strong>SÉCURITÉ<br />INCENDIE</strong></Reveal>
+          <div className="fire-copy">
+            <SectionHeading eyebrow="PROTECTION" title={<>Détecter. Contenir.<br /><em>Faciliter l’intervention.</em></>} intro="De l’alarme aux moyens d’intervention, chaque dispositif a un rôle précis dans la sécurité du bâtiment." />
+            <div className="fire-links">
+              {securityTopics.map((topic, index) => (
+                <Link href={topic.href} key={topic.slug}><span>{String(index + 1).padStart(2, "0")}</span>{topic.menuLabel}<MoveRight aria-hidden="true" /></Link>
+              ))}
+            </div>
+            <ArrowLink href="/securite-incendie" variant="dark">Explorer la sécurité incendie</ArrowLink>
           </div>
         </div>
       </section>
